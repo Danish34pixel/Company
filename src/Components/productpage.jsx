@@ -293,7 +293,7 @@ const productData = [
   },
   {
     id: "woven-roving-mat",
-    title: "Woven Roving Mat",
+    title: "200 GSM Fiberglass Woven Roving Fabric",
     description: "Mat for reinforcement and industrial use.",
     price: "₹170",
     priceUnit: "/ Kg",
@@ -339,9 +339,9 @@ const productData = [
     title: "Woven Roving Fabric",
     description:
       "High-performance woven roving fabric for composite applications.",
-    price: "₹1,200",
-    priceUnit: "/ Roll",
-    minimumOrder: "5 Rolls",
+    price: "₹115",
+    priceUnit: "/ Kg",
+    minimumOrder: "5 Kg",
     image: "/ewr360-gsm-fiberglass-woven-roving-125x125.webp",
     specifications: {
       usage: "COMPOSITES",
@@ -376,9 +376,9 @@ const productData = [
     id: "fiberglass-mat",
     title: "Fiberglass Mat",
     description: "Durable fiberglass mat for industrial and composite use.",
-    price: "₹950",
-    priceUnit: "/ Roll",
-    minimumOrder: "8 Rolls",
+    price: "₹450",
+    priceUnit: "/ Kg",
+    minimumOrder: "100 Kg",
     image:
       "/fiberglass-continuous-filament-mats-cfm300-gsm-cfm450-gsm-125x125.webp",
     specifications: {
@@ -414,9 +414,9 @@ const productData = [
     id: "fiberglass-products",
     title: "Fiberglass Products",
     description: "Wide range of fiberglass products for various applications.",
-    price: "₹1,500",
-    priceUnit: "/ Set",
-    minimumOrder: "2 Sets",
+    price: "₹115",
+    priceUnit: "/ Kg",
+    minimumOrder: "200 Kg",
     image: "/fiberglass-stitch-mats-emk300-gsm-emk450-gsm-125x125.webp",
     specifications: {
       usage: "MULTI-PURPOSE",
@@ -444,11 +444,11 @@ const productData = [
   },
   {
     id: "fiber-mat",
-    title: "Fiber Mat",
+    title: "Fiberglass Fabric Raw Material",
     description: "Premium fiber mat for composite and insulation applications.",
-    price: "₹1,100",
-    priceUnit: "/ Roll",
-    minimumOrder: "6 Rolls",
+    price: "₹220",
+    priceUnit: "/ Kg",
+    minimumOrder: "100 Kg",
     image: "/fiberglass-raw-material-125x125.webp",
     specifications: {
       usage: "COMPOSITES & INSULATION",
