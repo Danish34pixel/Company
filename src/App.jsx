@@ -6,6 +6,7 @@ import Contact from "./Components/Contact";
 import Products from "./Components/Products";
 import NotFound from "./Components/NotFound";
 import Screen from "./Components/Screen";
+import ProductPage from "./Components/productpage";
 
 import NavBar from "./Components/NavBar";
 import Image from "./Components/Image";
@@ -34,6 +35,7 @@ const App = () => {
           />
 
           <Route path="/screen" element={<Screen />} />
+          <Route path="/product/:productId" element={<ProductPage />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </main>

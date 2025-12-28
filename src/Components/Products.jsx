@@ -1,4 +1,5 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 
 const Products = () => {
   const productCategories = [
@@ -59,6 +60,25 @@ const Products = () => {
     },
   ];
 
+  const navigate = useNavigate();
+
+  // Helper to create a productId from product name
+  const toProductId = (name) =>
+    name
+      .toLowerCase()
+      .replace(/\s+/g, "-")
+      .replace(/[^a-z0-9\-]/g, "");
+
+  // Import productData ids in order (manually sync with productpage.jsx)
+  const productIds = [
+    "woven-roving",
+    "woven-roving-mat",
+    "woven-roving-fabric",
+    "fiberglass-mat",
+    "fiberglass-products",
+    "fiber-mat",
+  ];
+
   return (
     <div className="min-h-screen bg-gray-50 py-12 px-4">
       <div className="max-w-7xl mx-auto">
@@ -73,7 +93,12 @@ const Products = () => {
           {productCategories.map((category, index) => (
             <div
               key={index}
-              className="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-2xl hover:-translate-y-2 transition-all duration-500 group"
+              className="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-2xl hover:-translate-y-2 transition-all duration-500 group cursor-pointer"
+              onClick={() => {
+                if (productIds[index]) {
+                  navigate(`/product/${productIds[index]}`);
+                }
+              }}
             >
               <div className="p-6">
                 <div className="mb-6 bg-gradient-to-br from-gray-100 to-gray-200 rounded-xl overflow-hidden h-64 flex items-center justify-center relative">
@@ -94,6 +119,11 @@ const Products = () => {
                     <div
                       key={idx}
                       className="text-gray-600 hover:text-blue-600 hover:translate-x-2 cursor-pointer transition-all duration-300 py-2 border-b border-gray-100 last:border-b-0 flex items-center group/item"
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        // Optionally, map to a product id if you want sub-products to have their own pages
+                        // navigate(`/product/${toProductId(product)}`);
+                      }}
                     >
                       <span className="w-2 h-2 bg-blue-600 rounded-full mr-3 opacity-0 group-hover/item:opacity-100 transition-opacity duration-300"></span>
                       {product}
@@ -101,7 +131,10 @@ const Products = () => {
                   ))}
                 </div>
 
-                <button className="w-full bg-gradient-to-r from-blue-600 to-blue-700 text-white font-semibold text-lg hover:from-blue-700 hover:to-blue-800 transition-all duration-300 py-3 rounded-lg shadow-md hover:shadow-lg transform hover:scale-105">
+                <button
+                  className="w-full bg-gradient-to-r from-blue-600 to-blue-700 text-white font-semibold text-lg hover:from-blue-700 hover:to-blue-800 transition-all duration-300 py-3 rounded-lg shadow-md hover:shadow-lg transform hover:scale-105"
+                  onClick={(e) => e.stopPropagation()}
+                >
                   + View All
                 </button>
               </div>

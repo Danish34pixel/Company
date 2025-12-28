@@ -1,5 +1,6 @@
 import React, { useState, useRef, useEffect } from "react";
 import { ChevronLeft, ChevronRight, Eye } from "lucide-react";
+import { useNavigate } from "react-router-dom";
 
 const products = [
   {
@@ -102,9 +103,18 @@ const ImageSlider = () => {
     setCurrentIndex((prev) => (prev - 1 + products.length) % products.length);
   };
 
+  const navigate = useNavigate();
+  // Helper to create a productId from product name
+  const toProductId = (name) =>
+    name
+      .toLowerCase()
+      .replace(/\s+/g, "-")
+      .replace(/[^a-z0-9\-]/g, "");
+
   const handleCardClick = (index) => {
     if (index === 2) {
-      alert(`Viewing details for ${visibleProducts[2].name}`);
+      // Center card: go to product page
+      navigate(`/product/${toProductId(visibleProducts[2].name)}`);
     } else if (index < 2) {
       prevSlide();
     } else {

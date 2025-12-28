@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Phone, Mail, Search, ChevronDown, Menu, X } from "lucide-react";
+import { useNavigate } from "react-router-dom";
 
 const NavBar = () => {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
@@ -14,7 +15,66 @@ const NavBar = () => {
     "Woven Roving Mat",
     "Woven Roving Fabric",
     "Fiberglass Mat",
+    "Fiberglass Products",
   ];
+
+  // Map product name to productId for navigation
+  const productIdMap = {
+    "Woven Roving": "woven-roving",
+    "Woven Roving Mat": "woven-roving-mat",
+    "Woven Roving Fabric": "woven-roving-fabric",
+    "Fiberglass Mat": "fiberglass-mat",
+    "Fiberglass Products": "fiberglass-products",
+  };
+
+  const navigate = useNavigate();
+
+  // Search state
+  const [search, setSearch] = useState("");
+
+  // All product data for search (imported from productpage.jsx)
+  const allProducts = [
+    {
+      id: "ewr-360-gsm-fiberglass-woven-roving",
+      title: "EWR 360 GSM Fiberglass Woven Roving",
+    },
+    { id: "woven-roving", title: "Woven Fiberglass Roving" },
+    { id: "200-gsm-woven-roving-fabric", title: "200 GSM Woven Roving Fabric" },
+    { id: "fiberglass-roving", title: "Fiberglass Roving" },
+    {
+      id: "fiberglass-fabric-raw-material",
+      title: "Fiberglass fabric raw material",
+    },
+    {
+      id: "fiberglass-continuous-filament-mats",
+      title: "fiberglass continuous filament mats",
+    },
+    {
+      id: "fiberglass-stitch-mats-emk300-gsm-emk450-gsm",
+      title: "fiberglass stitch mats EMK300 gsm & EMK450 gsm",
+    },
+    { id: "woven-roving-mat", title: "Woven Roving Mat" },
+    { id: "woven-roving-fabric", title: "Woven Roving Fabric" },
+    { id: "fiberglass-mat", title: "Fiberglass Mat" },
+    { id: "fiberglass-products", title: "Fiberglass Products" },
+    { id: "fiber-mat", title: "Fiber Mat" },
+  ];
+
+  const handleSearch = (e) => {
+    e.preventDefault();
+    const query = search.trim().toLowerCase();
+    if (!query) return;
+    // Find first product whose title includes the search
+    const match = allProducts.find((p) =>
+      p.title.toLowerCase().includes(query)
+    );
+    if (match) {
+      navigate(`/product/${match.id}`);
+      setSearch("");
+    } else {
+      alert("No matching product found.");
+    }
+  };
 
   React.useEffect(() => {
     const handleScroll = () => {
@@ -46,12 +106,14 @@ const NavBar = () => {
             </div>
             <div className="transform group-hover:translate-x-2 transition-transform duration-300 min-w-0">
               <h1 className="text-xs xs:text-sm sm:text-lg md:text-2xl font-bold bg-gradient-to-r from-gray-900 via-blue-900 to-gray-900 bg-clip-text text-transparent hover:from-blue-600 hover:via-blue-800 hover:to-blue-600 transition-all duration-500 truncate">
-                JD Techfab Private Limited
+                Fibertechinovation
               </h1>
               <div className="flex items-center gap-1 xs:gap-2 md:gap-4 text-[10px] xs:text-xs md:text-sm text-gray-600 mt-1 flex-wrap">
                 <div className="flex items-center gap-1 hover:text-blue-600 transition-colors duration-200 cursor-pointer whitespace-nowrap">
                   <span className="animate-bounce">📍</span>
-                  <span className="hidden sm:inline">Jaipur, Rajasthan</span>
+                  <span className="hidden sm:inline">
+                    Khairthal-Tijara, Rajasthan
+                  </span>
                   <span className="sm:hidden">Jaipur</span>
                 </div>
                 <div className="flex items-center gap-1 hover:text-green-600 transition-colors duration-200 cursor-pointer">
@@ -200,6 +262,11 @@ const NavBar = () => {
               <button
                 key={product}
                 className="px-4 py-2 text-gray-700 hover:text-blue-600 transition-all duration-300 relative group rounded-lg hover:bg-blue-50 whitespace-nowrap"
+                onClick={() => {
+                  if (productIdMap[product]) {
+                    navigate(`/product/${productIdMap[product]}`);
+                  }
+                }}
               >
                 <span className="relative z-10">{product}</span>
                 <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-blue-600 group-hover:w-full transition-all duration-300"></span>
@@ -212,7 +279,6 @@ const NavBar = () => {
                 onMouseEnter={() => setIsDropdownOpen(true)}
                 onMouseLeave={() => setIsDropdownOpen(false)}
               >
-                <span className="relative z-10">Fiberglass Products</span>
                 <ChevronDown
                   className={`w-4 h-4 transition-transform duration-300 ${
                     isDropdownOpen ? "rotate-180" : ""
@@ -252,6 +318,11 @@ const NavBar = () => {
               <button
                 key={product}
                 className="px-3 py-2 sm:px-4 text-gray-700 bg-white hover:text-blue-600 hover:bg-blue-50 transition-all duration-300 rounded-lg whitespace-nowrap text-xs sm:text-sm border border-gray-200 flex-shrink-0"
+                onClick={() => {
+                  if (productIdMap[product]) {
+                    navigate(`/product/${productIdMap[product]}`);
+                  }
+                }}
               >
                 {product}
               </button>
@@ -290,14 +361,21 @@ const NavBar = () => {
           </div>
 
           {/* Search Bar */}
-          <div className="w-full lg:w-64 lg:ml-auto flex items-center border-2 border-gray-300 rounded-lg px-2 sm:px-3 py-2 hover:border-blue-500 focus-within:border-blue-600 focus-within:shadow-lg transition-all duration-300 bg-white group mt-1 sm:mt-0">
+          <form
+            className="w-full lg:w-64 lg:ml-auto flex items-center border-2 border-gray-300 rounded-lg px-2 sm:px-3 py-2 hover:border-blue-500 focus-within:border-blue-600 focus-within:shadow-lg transition-all duration-300 bg-white group mt-1 sm:mt-0"
+            onSubmit={handleSearch}
+          >
             <input
               type="text"
               placeholder="Search Products/Services"
               className="flex-1 outline-none text-xs sm:text-sm bg-transparent"
+              value={search}
+              onChange={(e) => setSearch(e.target.value)}
             />
-            <Search className="w-5 h-5 text-gray-400 group-hover:text-blue-600 group-focus-within:text-blue-600 transition-colors duration-300 flex-shrink-0" />
-          </div>
+            <button type="submit">
+              <Search className="w-5 h-5 text-gray-400 group-hover:text-blue-600 group-focus-within:text-blue-600 transition-colors duration-300 flex-shrink-0" />
+            </button>
+          </form>
         </div>
       </div>
 
