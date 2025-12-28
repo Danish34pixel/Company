@@ -35,27 +35,27 @@ const Products = () => {
       image:
         "/fiberglass-continuous-filament-mats-cfm300-gsm-cfm450-gsm-125x125.webp",
       products: [
-        "EWR360 GSM Fiberglass Woven Roving",
-        "EWR610 GSM Fiberglass Woven Roving",
-        "Fiberglass Woven Roving Manufacturers in Gaziabad",
+        "Fiberglass Continuous Filament Mats CFM300 GSM & CFM450 GSM",
+        "Fiberglass Combo Mats ECW900 (600/300) & ECW1050 (600/450)",
+        "Fiberglass Surface Tissue Mats SM30 & Carbon Tissue SCM30 GSM",
       ],
     },
     {
       title: "Fiberglass Products ",
       image: "/fiberglass-stitch-mats-emk300-gsm-emk450-gsm-125x125.webp",
       products: [
-        "EWR360 GSM Fiberglass Woven Roving",
-        "EWR610 GSM Fiberglass Woven Roving",
-        "Fiberglass Woven Roving Manufacturers in Gaziabad",
+        "Fiberglass Stitch Mats EMK300 GSM & EMK450 GSM",
+        "Multiple Smaller Width Production Possible",
+        "High Temperature Fiberglass",
       ],
     },
     {
       title: "Fiber Mat",
       image: "/fiberglass-raw-material-125x125.webp",
       products: [
-        "EWR360 GSM Fiberglass Woven Roving",
-        "EWR610 GSM Fiberglass Woven Roving",
-        "Fiberglass Woven Roving Manufacturers in Gaziabad",
+        "Fiberglass Fabric Raw Material",
+        "Chopped Strand ",
+        "E Glass Chopped Strand Mat",
       ],
     },
   ];

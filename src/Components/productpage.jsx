@@ -295,8 +295,8 @@ const productData = [
     id: "woven-roving-mat",
     title: "Woven Roving Mat",
     description: "Mat for reinforcement and industrial use.",
-    price: "₹1,000",
-    priceUnit: "/ Roll",
+    price: "₹170",
+    priceUnit: "/ Kg",
     minimumOrder: "10 Rolls",
     image: "/200-gsm-woven-roving-fabric-500x500.webp",
     specifications: {
