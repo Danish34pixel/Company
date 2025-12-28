@@ -111,7 +111,7 @@ const Contact = () => {
         <div className="border-t border-gray-700 pt-6 flex flex-col md:flex-row justify-between items-center gap-4">
           <div className="text-sm text-gray-400">
             <p>
-              © JD Techfab Private Limited. All Rights Reserved{" "}
+              © Fibertechinovation. All Rights Reserved{" "}
               <a href="/terms" className="underline hover:text-gray-300">
                 (Terms of Use)
               </a>

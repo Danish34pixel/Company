@@ -16,9 +16,9 @@ const Header = () => {
         <div className="flex justify-between items-start mb-8">
           <div className="flex-1">
             <p className="text-lg md:text-xl leading-relaxed max-w-5xl">
-              <span className="font-semibold">JD Techfab Private Limited</span>{" "}
-              has commenced its E glass Weaving facility at Jaipur, Rajasthan
-              with installed capacity of about 4000 kgs per day. The Company is
+              <span className="font-semibold">Fibertechinovation</span> has
+              commenced its E glass Weaving facility at Jaipur, Rajasthan with
+              installed capacity of about 4000 kgs per day. The Company is
               Manufacturing high quality Woven Roving Fabric.
             </p>
           </div>

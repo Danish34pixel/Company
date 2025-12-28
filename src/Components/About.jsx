@@ -19,7 +19,7 @@ const Contact = () => {
           {/* Left Section - Contact Information */}
           <div className="bg-blue-600 text-white rounded-lg p-8 lg:p-12">
             <h1 className="text-3xl lg:text-4xl font-bold mb-12">
-              JD Techfab Private Limited
+              Fibertechinovation
             </h1>
 
             {/* Contact Person */}
@@ -43,13 +43,9 @@ const Contact = () => {
                 </div>
                 <div>
                   <h2 className="text-xl font-semibold mb-2">ADDRESS</h2>
-                  <p className="text-lg font-medium mb-1">
-                    JD Techfab Private Limited
-                  </p>
+                  <p className="text-lg font-medium mb-1">Fibertechinovation</p>
                   <p className="text-base leading-relaxed">
-                    F-170, Bindayaka Industrial Area, Road No. 9,
-                    <br />
-                    Sirsi Road, Jaipur - 302012, Rajasthan, India
+                    Khairthal-Tijara, Rajasthan
                   </p>
                   <a
                     href="#"
