@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import {
   Phone,
   Mail,
@@ -11,6 +12,7 @@ import {
 } from "lucide-react";
 
 const NavBar = () => {
+  const navigate = useNavigate();
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const [isMobileProductsOpen, setIsMobileProductsOpen] = useState(false);
   const [active, setActive] = useState(0);
@@ -96,10 +98,11 @@ const NavBar = () => {
       className={`w-full bg-gradient-to-br from-slate-50 via-white to-amber-50/30 transition-all duration-500 sticky top-0 z-50 ${
         isScrolled ? "shadow-2xl backdrop-blur-md bg-opacity-95" : "shadow-lg"
       }`}
+      style={{ minHeight: "48px" }}
     >
       {/* Top Info Bar */}
-      <div className="bg-gradient-to-r from-slate-800 via-slate-700 to-slate-800 text-white py-0.5 px-2">
-        <div className="max-w-7xl mx-auto flex items-center justify-between text-xs sm:text-sm">
+      <div className="bg-gradient-to-r from-slate-800 via-slate-700 to-slate-800 text-white py-0 px-2">
+        <div className="max-w-7xl mx-auto flex items-center justify-between text-[10px] sm:text-xs">
           <div className="flex items-center gap-4">
             <div className="flex items-center gap-2 hover:scale-105 transition-transform">
               <MapPin className="w-3 h-3 sm:w-4 sm:h-4 text-amber-400" />
@@ -123,37 +126,37 @@ const NavBar = () => {
       {/* Main Navigation Container */}
       <div className="max-w-7xl mx-auto px-2 sm:px-4">
         {/* Top Section */}
-        <div className="flex items-center justify-between py-1 sm:py-2 gap-1 sm:gap-2">
+        <div className="flex items-center justify-between py-0.5 sm:py-1 gap-1 sm:gap-2">
           {/* Logo and Company Info */}
           <div className="flex items-center gap-3 md:gap-5 group flex-1 min-w-0">
             <div className="relative">
-              <div className="w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 bg-gradient-to-br from-slate-800 via-slate-700 to-amber-600 rounded-2xl flex items-center justify-center shadow-2xl hover:shadow-amber-500/30 hover:scale-110 hover:rotate-6 transition-all duration-500 cursor-pointer flex-shrink-0 relative overflow-hidden">
+              <div className="w-7 h-7 sm:w-8 sm:h-8 md:w-10 md:h-10 bg-gradient-to-br from-slate-800 via-slate-700 to-amber-600 rounded-2xl flex items-center justify-center shadow-2xl hover:shadow-amber-500/30 hover:scale-110 hover:rotate-6 transition-all duration-500 cursor-pointer flex-shrink-0 relative overflow-hidden">
                 <div className="absolute inset-0 bg-gradient-to-tr from-white/0 via-white/30 to-white/0 group-hover:translate-x-full transition-transform duration-700"></div>
-                <div className="text-white font-black text-xl md:text-3xl relative z-10 tracking-wider">
+                <div className="text-white font-black text-lg md:text-2xl relative z-10 tracking-wider">
                   JD
                 </div>
               </div>
-              <div className="absolute -bottom-1 -right-1 w-3 h-3 bg-emerald-500 rounded-full border border-white shadow-lg"></div>
+              <div className="absolute -bottom-1 -right-1 w-2.5 h-2.5 bg-emerald-500 rounded-full border border-white shadow-lg"></div>
             </div>
             <div className="transform group-hover:translate-x-1 transition-transform duration-300 min-w-0">
-              <h1 className="text-sm xs:text-base sm:text-xl md:text-3xl font-black bg-gradient-to-r from-slate-800 via-slate-700 to-amber-600 bg-clip-text text-transparent hover:from-slate-700 hover:via-slate-600 hover:to-amber-500 transition-all duration-500 tracking-tight">
+              <h1 className="text-xs xs:text-sm sm:text-lg md:text-2xl font-black bg-gradient-to-r from-slate-800 via-slate-700 to-amber-600 bg-clip-text text-transparent hover:from-slate-700 hover:via-slate-600 hover:to-amber-500 transition-all duration-500 tracking-tight">
                 Fibertechinovation
               </h1>
-              <p className="text-[10px] xs:text-xs md:text-sm font-semibold text-slate-600 mt-0.5 tracking-wide">
+              <p className="text-[9px] xs:text-[10px] md:text-xs font-semibold text-slate-600 mt-0.5 tracking-wide">
                 Premium Fiberglass Solutions
               </p>
             </div>
           </div>
 
           {/* Desktop Navigation Menu */}
-          <div className="hidden lg:flex items-center gap-0.5 bg-white/80 backdrop-blur-sm rounded-2xl shadow-xl border border-slate-200/50 p-0.5 relative overflow-hidden">
+          <div className="hidden lg:flex items-center gap-0.5 bg-white/80 backdrop-blur-sm rounded-2xl shadow-xl border border-slate-200/50 p-0.5 relative overflow-hidden min-h-[40px]">
             <div className="absolute inset-0 bg-gradient-to-r from-slate-50/50 via-amber-50/30 to-slate-50/50"></div>
 
             <div
-              className="absolute top-1.5 left-1.5 h-[calc(100%-12px)] bg-gradient-to-r from-slate-800 via-slate-700 to-amber-600 rounded-xl transition-all duration-500 ease-out shadow-lg"
+              className="absolute top-1 left-1 h-[calc(100%-8px)] bg-gradient-to-r from-slate-800 via-slate-700 to-amber-600 rounded-xl transition-all duration-500 ease-out shadow-lg"
               style={{
-                width: "140px",
-                transform: `translateX(${active * 144}px)`,
+                width: "110px",
+                transform: `translateX(${active * 114}px)`,
               }}
             />
 
@@ -162,7 +165,7 @@ const NavBar = () => {
                 <button
                   key={tab}
                   onClick={() => setActive(index)}
-                  className={`w-[140px] px-5 py-3 font-bold text-sm transition-all duration-500 relative rounded-xl ${
+                  className={`w-[110px] px-3 py-2 font-bold text-xs transition-all duration-500 relative rounded-xl ${
                     active === index
                       ? "text-white scale-105"
                       : "text-slate-700 hover:text-slate-900 hover:bg-slate-50"
@@ -175,22 +178,22 @@ const NavBar = () => {
           </div>
 
           {/* Contact Info - Desktop */}
-          <div className="hidden md:flex flex-col gap-0.5">
+          <div className="hidden md:flex flex-col gap-0.5 min-h-[40px]">
             <a
               href="tel:07942542768"
-              className="flex items-center gap-1 px-2 py-1 bg-white rounded-xl hover:bg-slate-50 border border-slate-200 hover:border-amber-300 hover:shadow-lg hover:shadow-amber-100 transition-all duration-300 group cursor-pointer"
+              className="flex items-center gap-1 px-2 py-0.5 bg-white rounded-xl hover:bg-slate-50 border border-slate-200 hover:border-amber-300 hover:shadow-lg hover:shadow-amber-100 transition-all duration-300 group cursor-pointer"
             >
-              <div className="w-6 h-6 bg-gradient-to-br from-slate-800 to-amber-600 rounded-lg flex items-center justify-center shadow-md group-hover:scale-110 transition-transform">
-                <Phone className="w-5 h-5 text-white group-hover:rotate-12 transition-transform" />
+              <div className="w-5 h-5 bg-gradient-to-br from-slate-800 to-amber-600 rounded-lg flex items-center justify-center shadow-md group-hover:scale-110 transition-transform">
+                <Phone className="w-4 h-4 text-white group-hover:rotate-12 transition-transform" />
               </div>
               <div>
-                <div className="text-slate-900 font-bold text-[10px]">
+                <div className="text-slate-900 font-bold text-[9px]">
                   07942542768
                 </div>
-                <div className="text-[8px] text-slate-600">Click to Call</div>
+                <div className="text-[7px] text-slate-600">Click to Call</div>
               </div>
             </a>
-            <button className="bg-gradient-to-r from-slate-800 via-slate-700 to-amber-600 text-white px-2 py-1 rounded-xl flex items-center justify-center gap-1 hover:shadow-xl hover:shadow-amber-500/30 hover:scale-105 transition-all duration-300 relative overflow-hidden group font-bold text-xs">
+            <button className="bg-gradient-to-r from-slate-800 via-slate-700 to-amber-600 text-white px-2 py-0.5 rounded-xl flex items-center justify-center gap-1 hover:shadow-xl hover:shadow-amber-500/30 hover:scale-105 transition-all duration-300 relative overflow-hidden group font-bold text-xs">
               <div className="absolute inset-0 bg-gradient-to-r from-white/0 via-white/20 to-white/0 group-hover:translate-x-full transition-transform duration-700"></div>
               <Mail className="w-5 h-5 relative z-10" />
               <span className="relative z-10">Send Enquiry</span>
@@ -212,8 +215,8 @@ const NavBar = () => {
 
         {/* Mobile Menu */}
         {isMobileMenuOpen && (
-          <div className="lg:hidden border-t border-slate-200 py-4 space-y-3 animate-in slide-in-from-top duration-300">
-            <div className="space-y-2">
+          <div className="lg:hidden border-t border-slate-200 py-2 space-y-2 animate-in slide-in-from-top duration-300">
+            <div className="space-y-1">
               {tabs.map((tab, index) => (
                 <button
                   key={tab}
@@ -221,7 +224,7 @@ const NavBar = () => {
                     setActive(index);
                     setIsMobileMenuOpen(false);
                   }}
-                  className={`w-full px-5 py-3.5 rounded-xl font-bold transition-all duration-300 text-left shadow-md ${
+                  className={`w-full px-5 py-2.5 rounded-xl font-bold transition-all duration-300 text-left shadow-md ${
                     active === index
                       ? "bg-gradient-to-r from-slate-800 via-slate-700 to-amber-600 text-white shadow-lg shadow-amber-500/20"
                       : "bg-white text-slate-700 hover:bg-slate-50 hover:text-slate-900 border border-slate-200"
@@ -232,20 +235,22 @@ const NavBar = () => {
               ))}
             </div>
 
-            <div className="md:hidden space-y-3 pt-4 border-t border-slate-200">
+            <div className="md:hidden space-y-2 pt-2 border-t border-slate-200">
               <a
                 href="tel:07942542768"
-                className="flex items-center gap-3 p-4 bg-white hover:bg-slate-50 rounded-xl border border-slate-200 hover:border-amber-300 transition-all duration-300"
+                className="flex items-center gap-2 p-2 bg-white hover:bg-slate-50 rounded-xl border border-slate-200 hover:border-amber-300 transition-all duration-300"
               >
-                <div className="w-12 h-12 bg-gradient-to-br from-slate-800 to-amber-600 rounded-lg flex items-center justify-center shadow-md">
-                  <Phone className="w-6 h-6 text-white" />
+                <div className="w-8 h-8 bg-gradient-to-br from-slate-800 to-amber-600 rounded-lg flex items-center justify-center shadow-md">
+                  <Phone className="w-4 h-4 text-white" />
                 </div>
                 <div>
-                  <div className="text-slate-900 font-bold">07942542768</div>
-                  <div className="text-xs text-slate-600">Tap to Call</div>
+                  <div className="text-slate-900 font-bold text-xs">
+                    07942542768
+                  </div>
+                  <div className="text-[10px] text-slate-600">Tap to Call</div>
                 </div>
               </a>
-              <button className="w-full bg-gradient-to-r from-slate-800 via-slate-700 to-amber-600 text-white px-6 py-4 rounded-xl flex items-center justify-center gap-2 hover:shadow-xl hover:shadow-amber-500/30 transition-all duration-300 font-bold">
+              <button className="w-full bg-gradient-to-r from-slate-800 via-slate-700 to-amber-600 text-white px-4 py-2 rounded-xl flex items-center justify-center gap-2 hover:shadow-xl hover:shadow-amber-500/30 transition-all duration-300 font-bold text-xs">
                 <Mail className="w-5 h-5" />
                 <span>Send Enquiry</span>
               </button>
@@ -254,24 +259,22 @@ const NavBar = () => {
         )}
 
         {/* Products Menu */}
-        <div className="flex flex-col lg:flex-row items-start lg:items-center gap-3 border-t border-slate-200 py-4 bg-gradient-to-r from-slate-50/50 via-white to-amber-50/30 rounded-t-3xl -mx-2 sm:-mx-4 px-2 sm:px-4 overflow-x-auto">
+        <div className="flex flex-col lg:flex-row items-start lg:items-center gap-2 border-t border-slate-200 py-2 bg-gradient-to-r from-slate-50/50 via-white to-amber-50/30 rounded-t-3xl -mx-2 sm:-mx-4 px-2 sm:px-4 overflow-x-auto">
           <div className="flex items-center gap-3 w-full lg:w-auto">
-            <div className="bg-gradient-to-r from-slate-800 via-slate-700 to-amber-600 text-white px-4 py-2 rounded-xl font-black text-sm tracking-wider shadow-lg whitespace-nowrap">
+            <div className="bg-gradient-to-r from-slate-800 via-slate-700 to-amber-600 text-white px-3 py-1.5 rounded-xl font-black text-xs tracking-wider shadow-lg whitespace-nowrap">
               OUR PRODUCTS
             </div>
           </div>
 
           {/* Desktop Products */}
-          <div className="hidden lg:flex items-center gap-2 flex-wrap">
+          <div className="hidden lg:flex items-center gap-1 flex-wrap">
             {products.map((product) => (
               <button
                 key={product}
-                className="px-4 py-2.5 text-slate-700 hover:text-amber-700 transition-all duration-300 relative group rounded-xl hover:bg-gradient-to-r hover:from-amber-50 hover:to-slate-50 whitespace-nowrap font-semibold border border-transparent hover:border-amber-200 hover:shadow-md"
+                className="px-3 py-1.5 text-slate-700 hover:text-amber-700 transition-all duration-300 relative group rounded-xl hover:bg-gradient-to-r hover:from-amber-50 hover:to-slate-50 whitespace-nowrap font-semibold border border-transparent hover:border-amber-200 hover:shadow-md text-xs"
                 onClick={() => {
                   if (productIdMap[product]) {
-                    console.log(
-                      `Navigate to: /product/${productIdMap[product]}`
-                    );
+                    navigate(`/product/${productIdMap[product]}`);
                   }
                 }}
               >
@@ -281,7 +284,7 @@ const NavBar = () => {
 
             <div className="relative">
               <button
-                className="px-4 py-2.5 text-slate-700 hover:text-amber-700 transition-all duration-300 flex items-center gap-2 group rounded-xl hover:bg-gradient-to-r hover:from-amber-50 hover:to-slate-50 whitespace-nowrap font-semibold border border-transparent hover:border-amber-200"
+                className="px-3 py-1.5 text-slate-700 hover:text-amber-700 transition-all duration-300 flex items-center gap-2 group rounded-xl hover:bg-gradient-to-r hover:from-amber-50 hover:to-slate-50 whitespace-nowrap font-semibold border border-transparent hover:border-amber-200 text-xs"
                 onMouseEnter={() => setIsDropdownOpen(true)}
                 onMouseLeave={() => setIsDropdownOpen(false)}
               >
@@ -308,7 +311,7 @@ const NavBar = () => {
                     ].map((product, i) => (
                       <button
                         key={i}
-                        className="w-full px-5 py-3 text-left text-slate-700 hover:bg-gradient-to-r hover:from-amber-50 hover:to-slate-50 hover:text-amber-700 transition-all duration-200 flex items-center gap-3 group font-medium"
+                        className="w-full px-4 py-2 text-left text-slate-700 hover:bg-gradient-to-r hover:from-amber-50 hover:to-slate-50 hover:text-amber-700 transition-all duration-200 flex items-center gap-2 group font-medium text-xs"
                       >
                         <div className="w-1.5 h-1.5 bg-gradient-to-r from-slate-800 to-amber-600 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-200"></div>
                         {product}
@@ -321,16 +324,14 @@ const NavBar = () => {
           </div>
 
           {/* Mobile Products */}
-          <div className="lg:hidden flex gap-2 overflow-x-auto pb-2 w-full scrollbar-hide">
+          <div className="lg:hidden flex gap-1 overflow-x-auto pb-1 w-full scrollbar-hide">
             {products.map((product) => (
               <button
                 key={product}
-                className="px-4 py-2.5 text-slate-700 bg-white hover:text-amber-700 hover:bg-gradient-to-r hover:from-amber-50 hover:to-slate-50 transition-all duration-300 rounded-xl whitespace-nowrap text-sm font-semibold border border-slate-200 hover:border-amber-300 flex-shrink-0 shadow-sm hover:shadow-md"
+                className="px-3 py-1.5 text-slate-700 bg-white hover:text-amber-700 hover:bg-gradient-to-r hover:from-amber-50 hover:to-slate-50 transition-all duration-300 rounded-xl whitespace-nowrap text-xs font-semibold border border-slate-200 hover:border-amber-300 flex-shrink-0 shadow-sm hover:shadow-md"
                 onClick={() => {
                   if (productIdMap[product]) {
-                    console.log(
-                      `Navigate to: /product/${productIdMap[product]}`
-                    );
+                    navigate(`/product/${productIdMap[product]}`);
                   }
                 }}
               >
@@ -339,7 +340,7 @@ const NavBar = () => {
             ))}
             <div className="relative flex-shrink-0">
               <button
-                className="px-4 py-2.5 text-slate-700 bg-white hover:text-amber-700 hover:bg-gradient-to-r hover:from-amber-50 hover:to-slate-50 transition-all duration-300 rounded-xl whitespace-nowrap text-sm font-semibold border border-slate-200 flex items-center gap-2 shadow-sm"
+                className="px-3 py-1.5 text-slate-700 bg-white hover:text-amber-700 hover:bg-gradient-to-r hover:from-amber-50 hover:to-slate-50 transition-all duration-300 rounded-xl whitespace-nowrap text-xs font-semibold border border-slate-200 flex items-center gap-2 shadow-sm"
                 onClick={() => setIsMobileProductsOpen((v) => !v)}
               >
                 More
@@ -360,7 +361,7 @@ const NavBar = () => {
                     ].map((product, i) => (
                       <button
                         key={i}
-                        className="w-full px-5 py-3 text-left text-slate-700 hover:bg-gradient-to-r hover:from-amber-50 hover:to-slate-50 hover:text-amber-700 transition-all duration-200 flex items-center gap-3 group font-medium"
+                        className="w-full px-4 py-2 text-left text-slate-700 hover:bg-gradient-to-r hover:from-amber-50 hover:to-slate-50 hover:text-amber-700 transition-all duration-200 flex items-center gap-2 group font-medium text-xs"
                         onClick={() => setIsMobileProductsOpen(false)}
                       >
                         <div className="w-1.5 h-1.5 bg-gradient-to-r from-slate-800 to-amber-600 rounded-full opacity-0 group-hover:opacity-100 transition-opacity"></div>
@@ -374,20 +375,20 @@ const NavBar = () => {
           </div>
 
           {/* Search Bar */}
-          <div className="w-full lg:w-80 lg:ml-auto flex items-center border-2 border-slate-300 rounded-xl px-4 py-3 hover:border-amber-400 focus-within:border-amber-500 focus-within:shadow-xl focus-within:shadow-amber-500/20 transition-all duration-300 bg-white group">
+          <div className="w-full lg:w-64 lg:ml-auto flex items-center border-2 border-slate-300 rounded-xl px-3 py-2 hover:border-amber-400 focus-within:border-amber-500 focus-within:shadow-xl focus-within:shadow-amber-500/20 transition-all duration-300 bg-white group">
             <input
               type="text"
               placeholder="Search our products..."
-              className="flex-1 outline-none text-sm bg-transparent placeholder-slate-400 font-medium"
+              className="flex-1 outline-none text-xs bg-transparent placeholder-slate-400 font-medium"
               value={search}
               onChange={(e) => setSearch(e.target.value)}
               onKeyPress={handleKeyPress}
             />
             <button
               onClick={handleSearch}
-              className="p-1.5 bg-gradient-to-r from-slate-800 to-amber-600 rounded-lg hover:shadow-lg transition-all duration-300 hover:scale-110"
+              className="p-1 bg-gradient-to-r from-slate-800 to-amber-600 rounded-lg hover:shadow-lg transition-all duration-300 hover:scale-110"
             >
-              <Search className="w-4 h-4 text-white flex-shrink-0" />
+              <Search className="w-3.5 h-3.5 text-white flex-shrink-0" />
             </button>
           </div>
         </div>

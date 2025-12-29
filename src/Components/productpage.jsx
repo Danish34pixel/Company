@@ -1,6 +1,178 @@
 import React, { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
 
 const productData = [
+  {
+    id: "fiber-mat",
+    title: "Fiber Mat",
+    description: "High-quality fiber mat for various applications.",
+    price: "₹110",
+    priceUnit: "/ Kg",
+    minimumOrder: "100 Kg",
+    image: "/fiberglass-raw-material-125x125.webp",
+    specifications: {
+      usage: "INSULATION & COMPOSITES",
+      color: "WHITE",
+      size: "200MM TO 3000MM",
+      material: "E GLASS FIBERGLASS",
+      packagingType: "POLY WRAPPED, CARTON BOXED",
+      filamentDiameter: "12-15MICRONS",
+      rollWeight: "45 TO 60 KGS",
+      countryOfOrigin: "Made in India",
+      gsm: "200 TO 610",
+      width: "200MM TO 3000MM",
+      qualityGrade: "A",
+    },
+    description2: "Fiber mat is used for ... (details here)",
+    features: ["Lightweight", "Durable", "Cost-effective"],
+    packaging: "Standard export packaging",
+    storage: "Store in a dry, cool place.",
+    safetyInfo: "Non-toxic.",
+    standards: "IS 11273, BS 3749",
+    additionalInfo: {
+      itemCode: "70194005",
+      productionCapacity: "2000 KGS / DAY",
+      deliveryTime: "3 TO 5 DAYS",
+      packagingDetails: "CARTONS",
+    },
+  },
+  {
+    id: "woven-roving-mat",
+    title: "Woven Roving Mat",
+    description: "High-quality woven roving mat for industrial applications.",
+    price: "₹130",
+    priceUnit: "/ Kg",
+    minimumOrder: "100 Kg",
+    image: "/fiberglass-stitch-mats-emk300-gsm-emk450-gsm-125x125.webp",
+    specifications: {
+      usage: "INSULATION & COMPOSITES",
+      color: "WHITE",
+      size: "200MM TO 3000MM",
+      material: "E GLASS FIBERGLASS",
+      packagingType: "POLY WRAPPED, CARTON BOXED",
+      filamentDiameter: "12-15MICRONS",
+      rollWeight: "45 TO 60 KGS",
+      countryOfOrigin: "Made in India",
+      gsm: "200 TO 610",
+      width: "200MM TO 3000MM",
+      qualityGrade: "A",
+    },
+    description2: "Woven roving mat is used for ... (details here)",
+    features: ["Easy to use", "Durable", "High strength"],
+    packaging: "Standard export packaging",
+    storage: "Store in a dry, cool place.",
+    safetyInfo: "Non-toxic.",
+    standards: "IS 11273, BS 3749",
+    additionalInfo: {
+      itemCode: "70194001",
+      productionCapacity: "3000 KGS / DAY",
+      deliveryTime: "3 TO 5 DAYS",
+      packagingDetails: "CARTONS",
+    },
+  },
+  {
+    id: "woven-roving-fabric",
+    title: "Woven Roving Fabric",
+    description: "Premium woven roving fabric for composites.",
+    price: "₹140",
+    priceUnit: "/ Kg",
+    minimumOrder: "100 Kg",
+    image: "/200-gsm-woven-roving-fabric-500x500.webp",
+    specifications: {
+      usage: "COMPOSITES",
+      color: "GREY",
+      size: "200MM TO 3000MM",
+      material: "E GLASS FIBERGLASS",
+      packagingType: "POLY WRAPPED, CARTON BOXED",
+      filamentDiameter: "12-15MICRONS",
+      rollWeight: "45 TO 60 KGS",
+      countryOfOrigin: "Made in India",
+      gsm: "200 TO 610",
+      width: "200MM TO 3000MM",
+      qualityGrade: "A",
+    },
+    description2: "Woven roving fabric is used for ... (details here)",
+    features: ["Flexible", "Strong", "Reliable"],
+    packaging: "Standard export packaging",
+    storage: "Store in a dry, cool place.",
+    safetyInfo: "Non-toxic.",
+    standards: "IS 11273, BS 3749",
+    additionalInfo: {
+      itemCode: "70194002",
+      productionCapacity: "3500 KGS / DAY",
+      deliveryTime: "3 TO 5 DAYS",
+      packagingDetails: "CARTONS",
+    },
+  },
+  {
+    id: "fiberglass-mat",
+    title: "Fiberglass Mat",
+    description: "High-quality fiberglass mat for various uses.",
+    price: "₹120",
+    priceUnit: "/ Kg",
+    minimumOrder: "100 Kg",
+    image:
+      "/fiberglass-continuous-filament-mats-cfm300-gsm-cfm450-gsm-125x125.webp",
+    specifications: {
+      usage: "INSULATION",
+      color: "WHITE",
+      size: "200MM TO 3000MM",
+      material: "E GLASS FIBERGLASS",
+      packagingType: "POLY WRAPPED, CARTON BOXED",
+      filamentDiameter: "12-15MICRONS",
+      rollWeight: "45 TO 60 KGS",
+      countryOfOrigin: "Made in India",
+      gsm: "200 TO 610",
+      width: "200MM TO 3000MM",
+      qualityGrade: "A",
+    },
+    description2: "Fiberglass mat is used for ... (details here)",
+    features: ["Lightweight", "Easy to handle", "Cost-effective"],
+    packaging: "Standard export packaging",
+    storage: "Store in a dry, cool place.",
+    safetyInfo: "Non-toxic.",
+    standards: "IS 11273, BS 3749",
+    additionalInfo: {
+      itemCode: "70194003",
+      productionCapacity: "2500 KGS / DAY",
+      deliveryTime: "3 TO 5 DAYS",
+      packagingDetails: "CARTONS",
+    },
+  },
+  {
+    id: "fiberglass-products",
+    title: "Fiberglass Products",
+    description: "Various fiberglass products for industrial needs.",
+    price: "₹150",
+    priceUnit: "/ Kg",
+    minimumOrder: "100 Kg",
+    image: "/fiberglass-stitch-mats-emk300-gsm-emk450-gsm-125x125.webp",
+    specifications: {
+      usage: "INDUSTRIAL",
+      color: "VARIOUS",
+      size: "200MM TO 3000MM",
+      material: "E GLASS FIBERGLASS",
+      packagingType: "POLY WRAPPED, CARTON BOXED",
+      filamentDiameter: "12-15MICRONS",
+      rollWeight: "45 TO 60 KGS",
+      countryOfOrigin: "Made in India",
+      gsm: "200 TO 610",
+      width: "200MM TO 3000MM",
+      qualityGrade: "A",
+    },
+    description2: "Fiberglass products are used for ... (details here)",
+    features: ["Versatile", "Durable", "High performance"],
+    packaging: "Standard export packaging",
+    storage: "Store in a dry, cool place.",
+    safetyInfo: "Non-toxic.",
+    standards: "IS 11273, BS 3749",
+    additionalInfo: {
+      itemCode: "70194004",
+      productionCapacity: "2000 KGS / DAY",
+      deliveryTime: "3 TO 5 DAYS",
+      packagingDetails: "CARTONS",
+    },
+  },
   {
     id: "woven-roving",
     title: "Woven Fiberglass Roving",
@@ -48,14 +220,26 @@ const productData = [
       packagingDetails: "STRONG CORRUGATED CARTONS",
     },
   },
+  // Add more product objects here as needed, with unique ids matching the NavBar links
 ];
 
 const ProductPage = () => {
-  const [product] = useState(productData[0]);
+  const { productId } = useParams();
+  const [product, setProduct] = useState(null);
 
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: "smooth" });
-  }, []);
+    const found = productData.find((p) => p.id === productId);
+    setProduct(found);
+  }, [productId]);
+
+  if (!product) {
+    return (
+      <div className="min-h-screen flex items-center justify-center text-2xl text-slate-600">
+        Product not found.
+      </div>
+    );
+  }
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-50 via-amber-50/30 to-slate-100">

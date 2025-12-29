@@ -1,7 +1,22 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 const Products = () => {
   const [selectedCategory, setSelectedCategory] = useState(null);
+  const navigate = useNavigate();
+  // Map product display names to product page ids
+  const productIdMap = {
+    "Woven Fiberglass Roving": "woven-roving",
+    "200 GSM Fiberglass Woven Roving Fabric": "woven-roving-mat",
+    "Woven Roving Mat": "woven-roving-mat",
+    "Woven Roving Fabric": "woven-roving-fabric",
+    "EWR360 GSM Fiberglass Woven Roving": "woven-roving-fabric",
+    "Fiberglass Continuous Filament Mats CFM300 GSM & CFM450 GSM":
+      "fiberglass-mat",
+    "Fiberglass Stitch Mats EMK300 GSM & EMK450 GSM": "fiberglass-products",
+    "Fiberglass Fabric Raw Material": "fiber-mat",
+    // Add more mappings as needed
+  };
 
   const productCategories = [
     {
@@ -63,7 +78,7 @@ const Products = () => {
 
   const handleCategoryClick = (index) => {
     setSelectedCategory(index);
-    console.log(`Navigating to category: ${productCategories[index].title}`);
+    // Optionally navigate to a category page
   };
 
   return (
@@ -86,7 +101,15 @@ const Products = () => {
             <div
               key={index}
               className="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-2xl hover:-translate-y-2 transition-all duration-500 group cursor-pointer border border-amber-100/30"
-              onClick={() => handleCategoryClick(index)}
+              onClick={() => {
+                // Try to navigate to the first product in the category if it has a mapping
+                const firstProduct = productCategories[index].products[0];
+                if (productIdMap[firstProduct]) {
+                  navigate(`/product/${productIdMap[firstProduct]}`);
+                } else {
+                  handleCategoryClick(index);
+                }
+              }}
             >
               <div className="p-6">
                 <div className="mb-6 bg-gradient-to-br from-slate-100 to-amber-50 rounded-xl overflow-hidden h-64 flex items-center justify-center relative">
@@ -113,7 +136,9 @@ const Products = () => {
                       className="text-slate-600 hover:text-amber-700 hover:translate-x-2 cursor-pointer transition-all duration-300 py-2 border-b border-slate-100 last:border-b-0 flex items-center group/item"
                       onClick={(e) => {
                         e.stopPropagation();
-                        console.log(`Selected product: ${product}`);
+                        if (productIdMap[product]) {
+                          navigate(`/product/${productIdMap[product]}`);
+                        }
                       }}
                     >
                       <span className="w-2 h-2 bg-amber-600 rounded-full mr-3 opacity-0 group-hover/item:opacity-100 transition-opacity duration-300"></span>
