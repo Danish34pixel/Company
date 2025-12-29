@@ -1,6 +1,14 @@
 import React, { useState } from "react";
-import { Phone, Mail, Search, ChevronDown, Menu, X } from "lucide-react";
-import { useNavigate } from "react-router-dom";
+import {
+  Phone,
+  Mail,
+  Search,
+  ChevronDown,
+  Menu,
+  X,
+  MapPin,
+  CheckCircle,
+} from "lucide-react";
 
 const NavBar = () => {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
@@ -18,7 +26,6 @@ const NavBar = () => {
     "Fiberglass Products",
   ];
 
-  // Map product name to productId for navigation
   const productIdMap = {
     "Woven Roving": "woven-roving",
     "Woven Roving Mat": "woven-roving-mat",
@@ -27,12 +34,8 @@ const NavBar = () => {
     "Fiberglass Products": "fiberglass-products",
   };
 
-  const navigate = useNavigate();
-
-  // Search state
   const [search, setSearch] = useState("");
 
-  // All product data for search (imported from productpage.jsx)
   const allProducts = [
     {
       id: "ewr-360-gsm-fiberglass-woven-roving",
@@ -60,19 +63,23 @@ const NavBar = () => {
     { id: "fiber-mat", title: "Fiber Mat" },
   ];
 
-  const handleSearch = (e) => {
-    e.preventDefault();
+  const handleSearch = () => {
     const query = search.trim().toLowerCase();
     if (!query) return;
-    // Find first product whose title includes the search
     const match = allProducts.find((p) =>
       p.title.toLowerCase().includes(query)
     );
     if (match) {
-      navigate(`/product/${match.id}`);
+      console.log(`Navigate to: /product/${match.id}`);
       setSearch("");
     } else {
       alert("No matching product found.");
+    }
+  };
+
+  const handleKeyPress = (e) => {
+    if (e.key === "Enter") {
+      handleSearch();
     }
   };
 
@@ -86,101 +93,106 @@ const NavBar = () => {
 
   return (
     <div
-      className={`w-full bg-gradient-to-r from-white via-blue-50 to-white transition-all duration-300 ${
-        isScrolled ? "shadow-2xl" : "shadow-md"
+      className={`w-full bg-gradient-to-br from-slate-50 via-white to-amber-50/30 transition-all duration-500 sticky top-0 z-50 ${
+        isScrolled ? "shadow-2xl backdrop-blur-md bg-opacity-95" : "shadow-lg"
       }`}
     >
+      {/* Top Info Bar */}
+      <div className="bg-gradient-to-r from-slate-800 via-slate-700 to-slate-800 text-white py-0.5 px-2">
+        <div className="max-w-7xl mx-auto flex items-center justify-between text-xs sm:text-sm">
+          <div className="flex items-center gap-4">
+            <div className="flex items-center gap-2 hover:scale-105 transition-transform">
+              <MapPin className="w-3 h-3 sm:w-4 sm:h-4 text-amber-400" />
+              <span className="hidden sm:inline">
+                Khairthal-Tijara, Rajasthan
+              </span>
+              <span className="sm:hidden">Rajasthan</span>
+            </div>
+            <div className="hidden md:flex items-center gap-2">
+              <CheckCircle className="w-4 h-4 text-emerald-400" />
+              <span>GST: 08AAFCJ0644M1ZD</span>
+            </div>
+          </div>
+          <div className="flex items-center gap-2">
+            <div className="w-2 h-2 bg-emerald-400 rounded-full animate-pulse"></div>
+            <span className="font-medium">81% Response Rate</span>
+          </div>
+        </div>
+      </div>
+
       {/* Main Navigation Container */}
       <div className="max-w-7xl mx-auto px-2 sm:px-4">
         {/* Top Section */}
-        <div className="flex items-center justify-between py-2 sm:py-4 gap-2 sm:gap-4 flex-wrap">
+        <div className="flex items-center justify-between py-1 sm:py-2 gap-1 sm:gap-2">
           {/* Logo and Company Info */}
-          <div className="flex items-center gap-2 md:gap-4 group flex-1 min-w-0">
-            <div className="w-10 h-10 sm:w-12 sm:h-12 md:w-20 md:h-20 bg-gradient-to-br from-blue-500 to-blue-700 border-2 md:border-4 border-white rounded-full flex items-center justify-center shadow-lg hover:shadow-2xl hover:scale-110 transition-all duration-300 cursor-pointer relative overflow-hidden flex-shrink-0">
-              <div className="absolute inset-0 bg-white opacity-0 group-hover:opacity-20 transition-opacity duration-300"></div>
-              <div className="text-white font-bold text-lg md:text-2xl relative z-10 drop-shadow-lg">
-                JD
+          <div className="flex items-center gap-3 md:gap-5 group flex-1 min-w-0">
+            <div className="relative">
+              <div className="w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 bg-gradient-to-br from-slate-800 via-slate-700 to-amber-600 rounded-2xl flex items-center justify-center shadow-2xl hover:shadow-amber-500/30 hover:scale-110 hover:rotate-6 transition-all duration-500 cursor-pointer flex-shrink-0 relative overflow-hidden">
+                <div className="absolute inset-0 bg-gradient-to-tr from-white/0 via-white/30 to-white/0 group-hover:translate-x-full transition-transform duration-700"></div>
+                <div className="text-white font-black text-xl md:text-3xl relative z-10 tracking-wider">
+                  JD
+                </div>
               </div>
-              {/* Animated ring effect */}
-              <div className="absolute inset-0 border-2 border-white rounded-full animate-ping opacity-20"></div>
+              <div className="absolute -bottom-1 -right-1 w-3 h-3 bg-emerald-500 rounded-full border border-white shadow-lg"></div>
             </div>
-            <div className="transform group-hover:translate-x-2 transition-transform duration-300 min-w-0">
-              <h1 className="text-xs xs:text-sm sm:text-lg md:text-2xl font-bold bg-gradient-to-r from-gray-900 via-blue-900 to-gray-900 bg-clip-text text-transparent hover:from-blue-600 hover:via-blue-800 hover:to-blue-600 transition-all duration-500 truncate">
+            <div className="transform group-hover:translate-x-1 transition-transform duration-300 min-w-0">
+              <h1 className="text-sm xs:text-base sm:text-xl md:text-3xl font-black bg-gradient-to-r from-slate-800 via-slate-700 to-amber-600 bg-clip-text text-transparent hover:from-slate-700 hover:via-slate-600 hover:to-amber-500 transition-all duration-500 tracking-tight">
                 Fibertechinovation
               </h1>
-              <div className="flex items-center gap-1 xs:gap-2 md:gap-4 text-[10px] xs:text-xs md:text-sm text-gray-600 mt-1 flex-wrap">
-                <div className="flex items-center gap-1 hover:text-blue-600 transition-colors duration-200 cursor-pointer whitespace-nowrap">
-                  <span className="animate-bounce">📍</span>
-                  <span className="hidden sm:inline">
-                    Khairthal-Tijara, Rajasthan
-                  </span>
-                  <span className="sm:hidden">Jaipur</span>
-                </div>
-                <div className="flex items-center gap-1 hover:text-green-600 transition-colors duration-200 cursor-pointer">
-                  <span className="text-green-500">✓</span>
-                  <span className="hidden lg:inline">
-                    GST No. 08AAFCJ0644M1ZD
-                  </span>
-                  <span className="lg:hidden">GST Verified</span>
-                </div>
-              </div>
+              <p className="text-[10px] xs:text-xs md:text-sm font-semibold text-slate-600 mt-0.5 tracking-wide">
+                Premium Fiberglass Solutions
+              </p>
             </div>
           </div>
 
           {/* Desktop Navigation Menu */}
-          <div className="hidden lg:block relative border border-gray-200 rounded-xl overflow-hidden shadow-lg backdrop-blur-sm bg-white/80 min-w-[150px]">
-            {/* Blue moving box with glow effect */}
+          <div className="hidden lg:flex items-center gap-0.5 bg-white/80 backdrop-blur-sm rounded-2xl shadow-xl border border-slate-200/50 p-0.5 relative overflow-hidden">
+            <div className="absolute inset-0 bg-gradient-to-r from-slate-50/50 via-amber-50/30 to-slate-50/50"></div>
+
             <div
-              className="absolute top-0 left-0 h-full w-[150px] bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 transition-all duration-500 ease-out"
+              className="absolute top-1.5 left-1.5 h-[calc(100%-12px)] bg-gradient-to-r from-slate-800 via-slate-700 to-amber-600 rounded-xl transition-all duration-500 ease-out shadow-lg"
               style={{
-                transform: `translateX(${active * 150}px)`,
-                boxShadow:
-                  "0 0 30px rgba(59, 130, 246, 0.6), inset 0 0 20px rgba(255, 255, 255, 0.2)",
+                width: "140px",
+                transform: `translateX(${active * 144}px)`,
               }}
             />
 
-            {/* Buttons */}
-            <div className="flex items-center relative z-10">
+            <div className="flex items-center relative z-10 gap-1">
               {tabs.map((tab, index) => (
                 <button
                   key={tab}
                   onClick={() => setActive(index)}
-                  className={`w-[150px] px-6 py-4 font-semibold transition-all duration-300 relative overflow-hidden group/btn
-              ${
-                active === index
-                  ? "text-white scale-105"
-                  : "text-gray-700 hover:text-blue-600"
-              }`}
+                  className={`w-[140px] px-5 py-3 font-bold text-sm transition-all duration-500 relative rounded-xl ${
+                    active === index
+                      ? "text-white scale-105"
+                      : "text-slate-700 hover:text-slate-900 hover:bg-slate-50"
+                  }`}
                 >
                   <span className="relative z-10 tracking-wide">{tab}</span>
-                  {active !== index && (
-                    <>
-                      <span className="absolute inset-0 bg-gradient-to-r from-blue-50 to-blue-100 opacity-0 group-hover/btn:opacity-100 transition-opacity duration-300"></span>
-                      <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-blue-600 group-hover/btn:w-full transition-all duration-300"></span>
-                    </>
-                  )}
                 </button>
               ))}
             </div>
           </div>
 
           {/* Contact Info - Desktop */}
-          <div className="hidden md:flex flex-col gap-1 sm:gap-2">
-            <div className="flex items-center gap-2 text-blue-600 font-semibold group cursor-pointer hover:scale-105 transition-transform duration-300">
-              <Phone className="w-4 h-4 lg:w-5 lg:h-5 group-hover:rotate-12 transition-transform duration-300" />
-              <div>
-                <div className="group-hover:text-blue-700 transition-colors text-sm lg:text-base">
-                  Call 07942542768
-                </div>
-                <div className="text-xs text-gray-600 flex items-center gap-1">
-                  <span className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></span>
-                  <span>81% Response Rate</span>
-                </div>
+          <div className="hidden md:flex flex-col gap-0.5">
+            <a
+              href="tel:07942542768"
+              className="flex items-center gap-1 px-2 py-1 bg-white rounded-xl hover:bg-slate-50 border border-slate-200 hover:border-amber-300 hover:shadow-lg hover:shadow-amber-100 transition-all duration-300 group cursor-pointer"
+            >
+              <div className="w-6 h-6 bg-gradient-to-br from-slate-800 to-amber-600 rounded-lg flex items-center justify-center shadow-md group-hover:scale-110 transition-transform">
+                <Phone className="w-5 h-5 text-white group-hover:rotate-12 transition-transform" />
               </div>
-            </div>
-            <button className="bg-gradient-to-r from-blue-600 to-blue-700 text-white px-4 lg:px-6 py-2 rounded-lg flex items-center gap-2 hover:from-blue-700 hover:to-blue-800 hover:shadow-xl hover:scale-105 transition-all duration-300 relative overflow-hidden group text-sm lg:text-base">
-              <span className="absolute inset-0 bg-white opacity-0 group-hover:opacity-20 transition-opacity duration-300"></span>
-              <Mail className="w-4 h-4 relative z-10 group-hover:rotate-12 transition-transform duration-300" />
+              <div>
+                <div className="text-slate-900 font-bold text-[10px]">
+                  07942542768
+                </div>
+                <div className="text-[8px] text-slate-600">Click to Call</div>
+              </div>
+            </a>
+            <button className="bg-gradient-to-r from-slate-800 via-slate-700 to-amber-600 text-white px-2 py-1 rounded-xl flex items-center justify-center gap-1 hover:shadow-xl hover:shadow-amber-500/30 hover:scale-105 transition-all duration-300 relative overflow-hidden group font-bold text-xs">
+              <div className="absolute inset-0 bg-gradient-to-r from-white/0 via-white/20 to-white/0 group-hover:translate-x-full transition-transform duration-700"></div>
+              <Mail className="w-5 h-5 relative z-10" />
               <span className="relative z-10">Send Enquiry</span>
             </button>
           </div>
@@ -188,21 +200,20 @@ const NavBar = () => {
           {/* Mobile Menu Button */}
           <button
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            className="lg:hidden p-2 rounded-lg hover:bg-blue-50 transition-colors duration-300"
+            className="lg:hidden p-1 rounded-xl hover:bg-slate-100 transition-all duration-300 border border-slate-200"
           >
             {isMobileMenuOpen ? (
-              <X className="w-6 h-6 text-gray-700" />
+              <X className="w-6 h-6 text-slate-700" />
             ) : (
-              <Menu className="w-6 h-6 text-gray-700" />
+              <Menu className="w-6 h-6 text-slate-700" />
             )}
           </button>
         </div>
 
         {/* Mobile Menu */}
         {isMobileMenuOpen && (
-          <div className="lg:hidden border-t border-gray-200 py-2 sm:py-4 space-y-2 sm:space-y-4 animate-in slide-in-from-top duration-300">
-            {/* Mobile Navigation */}
-            <div className="space-y-1 sm:space-y-2">
+          <div className="lg:hidden border-t border-slate-200 py-4 space-y-3 animate-in slide-in-from-top duration-300">
+            <div className="space-y-2">
               {tabs.map((tab, index) => (
                 <button
                   key={tab}
@@ -210,10 +221,10 @@ const NavBar = () => {
                     setActive(index);
                     setIsMobileMenuOpen(false);
                   }}
-                  className={`w-full px-4 py-3 rounded-lg font-semibold transition-all duration-300 text-left ${
+                  className={`w-full px-5 py-3.5 rounded-xl font-bold transition-all duration-300 text-left shadow-md ${
                     active === index
-                      ? "bg-gradient-to-r from-blue-600 to-blue-700 text-white shadow-lg"
-                      : "bg-white text-gray-700 hover:bg-blue-50 hover:text-blue-600"
+                      ? "bg-gradient-to-r from-slate-800 via-slate-700 to-amber-600 text-white shadow-lg shadow-amber-500/20"
+                      : "bg-white text-slate-700 hover:bg-slate-50 hover:text-slate-900 border border-slate-200"
                   }`}
                 >
                   {tab}
@@ -221,25 +232,21 @@ const NavBar = () => {
               ))}
             </div>
 
-            {/* Mobile Contact Info */}
-            <div className="md:hidden space-y-2 sm:space-y-3 pt-2 sm:pt-4 border-t border-gray-200">
+            <div className="md:hidden space-y-3 pt-4 border-t border-slate-200">
               <a
                 href="tel:07942542768"
-                className="flex items-center gap-3 p-3 bg-blue-50 rounded-lg hover:bg-blue-100 transition-colors duration-300"
+                className="flex items-center gap-3 p-4 bg-white hover:bg-slate-50 rounded-xl border border-slate-200 hover:border-amber-300 transition-all duration-300"
               >
-                <Phone className="w-5 h-5 text-blue-600" />
+                <div className="w-12 h-12 bg-gradient-to-br from-slate-800 to-amber-600 rounded-lg flex items-center justify-center shadow-md">
+                  <Phone className="w-6 h-6 text-white" />
+                </div>
                 <div>
-                  <div className="text-blue-600 font-semibold">
-                    Call 07942542768
-                  </div>
-                  <div className="text-xs text-gray-600 flex items-center gap-1">
-                    <span className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></span>
-                    <span>81% Response Rate</span>
-                  </div>
+                  <div className="text-slate-900 font-bold">07942542768</div>
+                  <div className="text-xs text-slate-600">Tap to Call</div>
                 </div>
               </a>
-              <button className="w-full bg-gradient-to-r from-blue-600 to-blue-700 text-white px-6 py-3 rounded-lg flex items-center justify-center gap-2 hover:from-blue-700 hover:to-blue-800 hover:shadow-xl transition-all duration-300">
-                <Mail className="w-4 h-4" />
+              <button className="w-full bg-gradient-to-r from-slate-800 via-slate-700 to-amber-600 text-white px-6 py-4 rounded-xl flex items-center justify-center gap-2 hover:shadow-xl hover:shadow-amber-500/30 transition-all duration-300 font-bold">
+                <Mail className="w-5 h-5" />
                 <span>Send Enquiry</span>
               </button>
             </div>
@@ -247,80 +254,83 @@ const NavBar = () => {
         )}
 
         {/* Products Menu */}
-        <div className="flex flex-col lg:flex-row items-start lg:items-center gap-2 sm:gap-3 lg:gap-1 border-t border-gray-200 py-2 sm:py-3 bg-gradient-to-r from-transparent via-blue-50/30 to-transparent overflow-x-auto">
-          <div className="flex items-center gap-1 xs:gap-2 w-full lg:w-auto">
-            <span className="text-blue-600 font-bold text-base lg:text-lg relative whitespace-nowrap">
-              OUR RANGE
-              <span className="absolute -bottom-1 left-0 w-full h-0.5 bg-gradient-to-r from-blue-400 to-blue-600"></span>
-            </span>
-            <span className="text-gray-400 hidden lg:inline">|</span>
+        <div className="flex flex-col lg:flex-row items-start lg:items-center gap-3 border-t border-slate-200 py-4 bg-gradient-to-r from-slate-50/50 via-white to-amber-50/30 rounded-t-3xl -mx-2 sm:-mx-4 px-2 sm:px-4 overflow-x-auto">
+          <div className="flex items-center gap-3 w-full lg:w-auto">
+            <div className="bg-gradient-to-r from-slate-800 via-slate-700 to-amber-600 text-white px-4 py-2 rounded-xl font-black text-sm tracking-wider shadow-lg whitespace-nowrap">
+              OUR PRODUCTS
+            </div>
           </div>
 
           {/* Desktop Products */}
-          <div className="hidden lg:flex items-center gap-1 flex-wrap">
+          <div className="hidden lg:flex items-center gap-2 flex-wrap">
             {products.map((product) => (
               <button
                 key={product}
-                className="px-4 py-2 text-gray-700 hover:text-blue-600 transition-all duration-300 relative group rounded-lg hover:bg-blue-50 whitespace-nowrap"
+                className="px-4 py-2.5 text-slate-700 hover:text-amber-700 transition-all duration-300 relative group rounded-xl hover:bg-gradient-to-r hover:from-amber-50 hover:to-slate-50 whitespace-nowrap font-semibold border border-transparent hover:border-amber-200 hover:shadow-md"
                 onClick={() => {
                   if (productIdMap[product]) {
-                    navigate(`/product/${productIdMap[product]}`);
+                    console.log(
+                      `Navigate to: /product/${productIdMap[product]}`
+                    );
                   }
                 }}
               >
                 <span className="relative z-10">{product}</span>
-                <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-blue-600 group-hover:w-full transition-all duration-300"></span>
               </button>
             ))}
 
             <div className="relative">
               <button
-                className="px-4 py-2 text-gray-700 hover:text-blue-600 transition-all duration-300 flex items-center gap-1 group rounded-lg hover:bg-blue-50 whitespace-nowrap"
+                className="px-4 py-2.5 text-slate-700 hover:text-amber-700 transition-all duration-300 flex items-center gap-2 group rounded-xl hover:bg-gradient-to-r hover:from-amber-50 hover:to-slate-50 whitespace-nowrap font-semibold border border-transparent hover:border-amber-200"
                 onMouseEnter={() => setIsDropdownOpen(true)}
                 onMouseLeave={() => setIsDropdownOpen(false)}
               >
+                <span>More</span>
                 <ChevronDown
                   className={`w-4 h-4 transition-transform duration-300 ${
                     isDropdownOpen ? "rotate-180" : ""
                   }`}
                 />
-                <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-blue-600 group-hover:w-full transition-all duration-300"></span>
               </button>
 
-              {/* Dropdown Menu */}
               {isDropdownOpen && (
                 <div
-                  className="absolute top-full left-0 mt-2 w-64 bg-white rounded-lg shadow-2xl border border-gray-100 overflow-hidden z-50 animate-in fade-in slide-in-from-top-2 duration-300"
+                  className="absolute top-full left-0 mt-2 w-64 bg-white rounded-2xl shadow-2xl border border-slate-200 overflow-hidden z-50 animate-in fade-in slide-in-from-top-2 duration-300"
                   onMouseEnter={() => setIsDropdownOpen(true)}
                   onMouseLeave={() => setIsDropdownOpen(false)}
                 >
                   <div className="py-2">
-                    {["Product 1", "Product 2", "Product 3", "Product 4"].map(
-                      (product, i) => (
-                        <button
-                          key={i}
-                          className="w-full px-4 py-3 text-left text-gray-700 hover:bg-blue-50 hover:text-blue-600 transition-all duration-200 flex items-center gap-2 group"
-                        >
-                          <span className="w-2 h-2 bg-blue-600 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-200"></span>
-                          {product}
-                        </button>
-                      )
-                    )}
+                    {[
+                      "Advanced Product 1",
+                      "Premium Product 2",
+                      "Special Product 3",
+                      "Custom Product 4",
+                    ].map((product, i) => (
+                      <button
+                        key={i}
+                        className="w-full px-5 py-3 text-left text-slate-700 hover:bg-gradient-to-r hover:from-amber-50 hover:to-slate-50 hover:text-amber-700 transition-all duration-200 flex items-center gap-3 group font-medium"
+                      >
+                        <div className="w-1.5 h-1.5 bg-gradient-to-r from-slate-800 to-amber-600 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-200"></div>
+                        {product}
+                      </button>
+                    ))}
                   </div>
                 </div>
               )}
             </div>
           </div>
 
-          {/* Mobile Products - Horizontal Scroll */}
-          <div className="lg:hidden flex gap-1 xs:gap-2 overflow-x-auto pb-1 sm:pb-2 w-full scrollbar-hide">
+          {/* Mobile Products */}
+          <div className="lg:hidden flex gap-2 overflow-x-auto pb-2 w-full scrollbar-hide">
             {products.map((product) => (
               <button
                 key={product}
-                className="px-3 py-2 sm:px-4 text-gray-700 bg-white hover:text-blue-600 hover:bg-blue-50 transition-all duration-300 rounded-lg whitespace-nowrap text-xs sm:text-sm border border-gray-200 flex-shrink-0"
+                className="px-4 py-2.5 text-slate-700 bg-white hover:text-amber-700 hover:bg-gradient-to-r hover:from-amber-50 hover:to-slate-50 transition-all duration-300 rounded-xl whitespace-nowrap text-sm font-semibold border border-slate-200 hover:border-amber-300 flex-shrink-0 shadow-sm hover:shadow-md"
                 onClick={() => {
                   if (productIdMap[product]) {
-                    navigate(`/product/${productIdMap[product]}`);
+                    console.log(
+                      `Navigate to: /product/${productIdMap[product]}`
+                    );
                   }
                 }}
               >
@@ -329,10 +339,10 @@ const NavBar = () => {
             ))}
             <div className="relative flex-shrink-0">
               <button
-                className="px-3 py-2 sm:px-4 text-gray-700 bg-white hover:text-blue-600 hover:bg-blue-50 transition-all duration-300 rounded-lg whitespace-nowrap text-xs sm:text-sm border border-gray-200 flex items-center gap-1"
+                className="px-4 py-2.5 text-slate-700 bg-white hover:text-amber-700 hover:bg-gradient-to-r hover:from-amber-50 hover:to-slate-50 transition-all duration-300 rounded-xl whitespace-nowrap text-sm font-semibold border border-slate-200 flex items-center gap-2 shadow-sm"
                 onClick={() => setIsMobileProductsOpen((v) => !v)}
               >
-                More Products
+                More
                 <ChevronDown
                   className={`w-4 h-4 transition-transform duration-300 ${
                     isMobileProductsOpen ? "rotate-180" : ""
@@ -340,20 +350,23 @@ const NavBar = () => {
                 />
               </button>
               {isMobileProductsOpen && (
-                <div className="absolute left-0 top-full mt-1 w-48 bg-white rounded-lg shadow-2xl border border-gray-100 overflow-hidden z-50 animate-in fade-in slide-in-from-top-2 duration-300">
+                <div className="absolute left-0 top-full mt-2 w-56 bg-white rounded-2xl shadow-2xl border border-slate-200 overflow-hidden z-50 animate-in fade-in slide-in-from-top-2 duration-300">
                   <div className="py-2">
-                    {["Product 1", "Product 2", "Product 3", "Product 4"].map(
-                      (product, i) => (
-                        <button
-                          key={i}
-                          className="w-full px-4 py-3 text-left text-gray-700 hover:bg-blue-50 hover:text-blue-600 transition-all duration-200 flex items-center gap-2 group"
-                          onClick={() => setIsMobileProductsOpen(false)}
-                        >
-                          <span className="w-2 h-2 bg-blue-600 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-200"></span>
-                          {product}
-                        </button>
-                      )
-                    )}
+                    {[
+                      "Advanced Product 1",
+                      "Premium Product 2",
+                      "Special Product 3",
+                      "Custom Product 4",
+                    ].map((product, i) => (
+                      <button
+                        key={i}
+                        className="w-full px-5 py-3 text-left text-slate-700 hover:bg-gradient-to-r hover:from-amber-50 hover:to-slate-50 hover:text-amber-700 transition-all duration-200 flex items-center gap-3 group font-medium"
+                        onClick={() => setIsMobileProductsOpen(false)}
+                      >
+                        <div className="w-1.5 h-1.5 bg-gradient-to-r from-slate-800 to-amber-600 rounded-full opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                        {product}
+                      </button>
+                    ))}
                   </div>
                 </div>
               )}
@@ -361,21 +374,22 @@ const NavBar = () => {
           </div>
 
           {/* Search Bar */}
-          <form
-            className="w-full lg:w-64 lg:ml-auto flex items-center border-2 border-gray-300 rounded-lg px-2 sm:px-3 py-2 hover:border-blue-500 focus-within:border-blue-600 focus-within:shadow-lg transition-all duration-300 bg-white group mt-1 sm:mt-0"
-            onSubmit={handleSearch}
-          >
+          <div className="w-full lg:w-80 lg:ml-auto flex items-center border-2 border-slate-300 rounded-xl px-4 py-3 hover:border-amber-400 focus-within:border-amber-500 focus-within:shadow-xl focus-within:shadow-amber-500/20 transition-all duration-300 bg-white group">
             <input
               type="text"
-              placeholder="Search Products/Services"
-              className="flex-1 outline-none text-xs sm:text-sm bg-transparent"
+              placeholder="Search our products..."
+              className="flex-1 outline-none text-sm bg-transparent placeholder-slate-400 font-medium"
               value={search}
               onChange={(e) => setSearch(e.target.value)}
+              onKeyPress={handleKeyPress}
             />
-            <button type="submit">
-              <Search className="w-5 h-5 text-gray-400 group-hover:text-blue-600 group-focus-within:text-blue-600 transition-colors duration-300 flex-shrink-0" />
+            <button
+              onClick={handleSearch}
+              className="p-1.5 bg-gradient-to-r from-slate-800 to-amber-600 rounded-lg hover:shadow-lg transition-all duration-300 hover:scale-110"
+            >
+              <Search className="w-4 h-4 text-white flex-shrink-0" />
             </button>
-          </form>
+          </div>
         </div>
       </div>
 
@@ -386,6 +400,13 @@ const NavBar = () => {
         .scrollbar-hide {
           -ms-overflow-style: none;
           scrollbar-width: none;
+        }
+        @keyframes fadeIn {
+          from { opacity: 0; transform: translateY(-10px); }
+          to { opacity: 1; transform: translateY(0); }
+        }
+        .animate-in {
+          animation: fadeIn 0.3s ease-out;
         }
       `}</style>
     </div>
