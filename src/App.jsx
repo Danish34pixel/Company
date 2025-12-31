@@ -12,14 +12,18 @@ import NavBar from "./Components/NavBar";
 import Image from "./Components/Image";
 import Header from "./Components/Header";
 import Rating from "./Components/Rating";
+import Contacts from "./Components/Contacts";
 
 const App = () => {
   return (
     <Router>
       <NavBar />
+     
 
       <main>
         <Routes>
+          <Route path="/about-us" element={<About/>} />
+          <Route path="/contact-us" element={<Contacts/>} />
           <Route
             path="/"
             element={

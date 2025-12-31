@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import {
   Phone,
   Mail,
@@ -19,7 +19,17 @@ const NavBar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
-  const tabs = ["HOME", "ABOUT US", "CONTACT US"];
+  const tabs = [
+  { label: "HOME", path: "/" },
+  { label: "ABOUT US", path: "/about-us" },
+  { label: "CONTACT US", path: "/contact-us" },
+];
+const handleTabClick = (index, path) => {
+  setActive(index);
+  navigate(path);
+  setIsMobileMenuOpen(false);
+};
+
   const products = [
     "Woven Roving",
     "Woven Roving Mat",
@@ -102,7 +112,7 @@ const NavBar = () => {
     >
       {/* Top Info Bar */}
       <div className="bg-gradient-to-r from-slate-800 via-slate-700 to-slate-800 text-white py-0 px-2">
-        <div className="max-w-7xl mx-auto flex items-center justify-between text-[10px] sm:text-xs">
+        <div className="max-w-7xl mx-auto flex items-center justify-between text-[10px] h-10 sm:text-xs">
           <div className="flex items-center gap-4">
             <div className="flex items-center gap-2 hover:scale-105 transition-transform">
               <MapPin className="w-3 h-3 sm:w-4 sm:h-4 text-amber-400" />
@@ -163,15 +173,15 @@ const NavBar = () => {
             <div className="flex items-center relative z-10 gap-1">
               {tabs.map((tab, index) => (
                 <button
-                  key={tab}
-                  onClick={() => setActive(index)}
+                  key={tab.label}
+                  onClick={() => handleTabClick(index, tab.path)}
                   className={`w-[110px] px-3 py-2 font-bold text-xs transition-all duration-500 relative rounded-xl ${
                     active === index
                       ? "text-white scale-105"
                       : "text-slate-700 hover:text-slate-900 hover:bg-slate-50"
                   }`}
                 >
-                  <span className="relative z-10 tracking-wide">{tab}</span>
+                  <span className="relative z-10 tracking-wide">{tab.label}</span>
                 </button>
               ))}
             </div>
@@ -180,7 +190,7 @@ const NavBar = () => {
           {/* Contact Info - Desktop */}
           <div className="hidden md:flex flex-col gap-0.5 min-h-[40px]">
             <a
-              href="tel:07942542768"
+              href="tel:+919559422555"
               className="flex items-center gap-1 px-2 py-0.5 bg-white rounded-xl hover:bg-slate-50 border border-slate-200 hover:border-amber-300 hover:shadow-lg hover:shadow-amber-100 transition-all duration-300 group cursor-pointer"
             >
               <div className="w-5 h-5 bg-gradient-to-br from-slate-800 to-amber-600 rounded-lg flex items-center justify-center shadow-md group-hover:scale-110 transition-transform">
@@ -188,7 +198,7 @@ const NavBar = () => {
               </div>
               <div>
                 <div className="text-slate-900 font-bold text-[9px]">
-                  07942542768
+                  +919559422555     
                 </div>
                 <div className="text-[7px] text-slate-600">Click to Call</div>
               </div>
@@ -261,9 +271,9 @@ const NavBar = () => {
         {/* Products Menu */}
         <div className="flex flex-col lg:flex-row items-start lg:items-center gap-2 border-t border-slate-200 py-2 bg-gradient-to-r from-slate-50/50 via-white to-amber-50/30 rounded-t-3xl -mx-2 sm:-mx-4 px-2 sm:px-4 overflow-x-auto">
           <div className="flex items-center gap-3 w-full lg:w-auto">
-            <div className="bg-gradient-to-r from-slate-800 via-slate-700 to-amber-600 text-white px-3 py-1.5 rounded-xl font-black text-xs tracking-wider shadow-lg whitespace-nowrap">
+            <Link to="/" className="bg-gradient-to-r from-slate-800 via-slate-700 to-amber-600 text-white px-3 py-1.5 rounded-xl font-black text-xs tracking-wider shadow-lg whitespace-nowrap hover:shadow-amber-500/30 hover:scale-105 transition-all duration-300">
               OUR PRODUCTS
-            </div>
+            </Link>
           </div>
 
           {/* Desktop Products */}
@@ -298,7 +308,7 @@ const NavBar = () => {
 
               {isDropdownOpen && (
                 <div
-                  className="absolute top-full left-0 mt-2 w-64 bg-white rounded-2xl shadow-2xl border border-slate-200 overflow-hidden z-50 animate-in fade-in slide-in-from-top-2 duration-300"
+                  className="absolute  top-full left-0 mt-2 w-64 bg-white rounded-2xl shadow-2xl border border-slate-200 overflow-hidden z-50 animate-in fade-in slide-in-from-top-2 duration-300"
                   onMouseEnter={() => setIsDropdownOpen(true)}
                   onMouseLeave={() => setIsDropdownOpen(false)}
                 >

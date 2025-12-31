@@ -77,7 +77,7 @@ const Contact = () => {
                     <h2 className="text-sm font-bold mb-1 text-amber-200 tracking-wider">
                       CONTACT PERSON
                     </h2>
-                    <p className="text-xl font-bold">Prakash Singhee</p>
+                    <p className="text-xl font-bold">Mohan</p>
                     <p className="text-amber-100 text-sm mt-1">
                       Chief Executive Officer
                     </p>
@@ -95,9 +95,9 @@ const Contact = () => {
                     <h2 className="text-sm font-bold mb-2 text-amber-200 tracking-wider">
                       ADDRESS
                     </h2>
-                    <p className="text-lg font-bold mb-1">Fibertechinovation</p>
+                    <p className="text-lg font-bold mb-1">Industrial Area Road (Karoli)</p>
                     <p className="text-base leading-relaxed text-white/90">
-                      Khairthal-Tijara, Rajasthan, India
+                      RIICO Ind. Area, Distt.- Khairthal-Tijara, Rajasthan, 301707 (INDIA)
                     </p>
                     <a
                       href="#"
@@ -123,13 +123,13 @@ const Contact = () => {
                       CONTACT NUMBER
                     </h2>
                     <a
-                      href="tel:07942542768"
+                      href="tel:+919559422555"
                       className="text-2xl font-black hover:text-amber-300 transition-colors"
                     >
-                      07942542768
+                      +919559422555
                     </a>
                     <p className="text-white/80 text-sm mt-1">
-                      Available Mon-Sat, 9 AM - 6 PM
+                      Available Mon-Sat, 8 AM - 10 PM
                     </p>
                   </div>
                 </div>
@@ -146,10 +146,10 @@ const Contact = () => {
                       EMAIL
                     </h2>
                     <a
-                      href="mailto:info@fibertechinovation.com"
+                      href="mailto:sales@fibertechinnovations.com"
                       className="text-lg font-bold hover:text-amber-300 transition-colors"
                     >
-                      info@fibertechinovation.com
+                      sales@fibertechinnovations.com
                     </a>
                   </div>
                 </div>

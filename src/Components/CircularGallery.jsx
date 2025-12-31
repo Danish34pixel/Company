@@ -48,7 +48,7 @@ function createTextTexture(
   const textWidth = Math.ceil(metrics.width);
   const textHeight = Math.ceil(parseInt(font, 10) * 1.2);
   canvas.width = textWidth + 20;
-  canvas.height = textHeight + 20;
+  canvas.height = textHeight + 45;
   context.font = font;
   context.fillStyle = color;
   context.textBaseline = "middle";

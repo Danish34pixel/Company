@@ -67,20 +67,20 @@ const Footer = () => {
             {/* Quick Contact */}
             <div className="space-y-3">
               <a
-                href="tel:07942542768"
+                href="tel:+919559422555"
                 className="flex items-center gap-3 text-slate-300 hover:text-amber-400 transition-colors group"
               >
                 <div className="w-10 h-10 bg-slate-700/50 rounded-lg flex items-center justify-center group-hover:bg-amber-600/20 transition-colors">
                   <Phone className="w-5 h-5" />
                 </div>
-                <span className="font-semibold">07942542768</span>
+                <span className="font-semibold">+919559422555</span>
               </a>
 
               <div className="flex items-center gap-3 text-slate-300">
                 <div className="w-10 h-10 bg-slate-700/50 rounded-lg flex items-center justify-center">
                   <Clock className="w-5 h-5" />
                 </div>
-                <span className="text-sm">Mon-Sat: 9 AM - 6 PM</span>
+                <span className="text-sm">Mon-Sat: 8 AM - 10 PM</span>
               </div>
             </div>
 
