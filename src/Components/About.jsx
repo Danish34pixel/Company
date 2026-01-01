@@ -61,7 +61,7 @@ const Contact = () => {
 
             <div className="relative z-10">
               <h1 className="text-3xl lg:text-4xl font-black mb-3">
-                Fibertechinovation
+                Fibertechinovations
               </h1>
               <p className="text-amber-200 text-sm mb-12 font-medium">
                 Premium Fiberglass Solutions Since 2010
@@ -77,7 +77,11 @@ const Contact = () => {
                     <h2 className="text-sm font-bold mb-1 text-amber-200 tracking-wider">
                       CONTACT PERSON
                     </h2>
-                    <p className="text-xl font-bold">Mohan</p>
+                    <p className="text-xl font-bold">
+                      Ankit Shukla <br />
+                      Mirdul Shukla <br />
+                      Sandeep
+                    </p>
                     <p className="text-amber-100 text-sm mt-1">
                       Chief Executive Officer
                     </p>
@@ -95,9 +99,11 @@ const Contact = () => {
                     <h2 className="text-sm font-bold mb-2 text-amber-200 tracking-wider">
                       ADDRESS
                     </h2>
-                    <p className="text-lg font-bold mb-1">Industrial Area Road (Karoli)</p>
+                    <p className="text-lg font-bold mb-1"></p>
                     <p className="text-base leading-relaxed text-white/90">
-                      RIICO Ind. Area, Distt.- Khairthal-Tijara, Rajasthan, 301707 (INDIA)
+                      Building No./Flat No.: GI-66 Road/Street: RIICO INDUSTRIAL
+                      AREA City/Town/Village: Tapukara District: Khairthal
+                      Tijara State: Rajasthan PIN Code: 301707
                     </p>
                     <a
                       href="#"
@@ -126,7 +132,9 @@ const Contact = () => {
                       href="tel:+919559422555"
                       className="text-2xl font-black hover:text-amber-300 transition-colors"
                     >
-                      +919559422555
+                      +919559422555 <br />
+                      +919024242304 <br />
+                      +919991732322
                     </a>
                     <p className="text-white/80 text-sm mt-1">
                       Available Mon-Sat, 8 AM - 10 PM

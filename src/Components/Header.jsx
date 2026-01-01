@@ -29,13 +29,13 @@ const Header = () => {
     {
       icon: Users,
       label: "Total Number of Employees",
-      value: "11 to 25 People",
+      value: "11 to 15 People",
       color: "from-emerald-500 to-emerald-600",
     },
     {
       icon: Calendar,
       label: "GST Registration Date",
-      value: "12-02-2021",
+      value: "11-09-2025",
       color: "from-blue-500 to-blue-600",
     },
     {
@@ -50,19 +50,14 @@ const Header = () => {
     {
       icon: TrendingUp,
       label: "Annual Turnover",
-      value: "₹5 - 25 Cr",
+      value: "₹2 - 3 Cr",
       color: "from-green-500 to-green-600",
     },
-    {
-      icon: Globe,
-      label: "Import Export Code (IEC)",
-      value: "AAFCJ0644M",
-      color: "from-cyan-500 to-cyan-600",
-    },
+
     {
       icon: FileText,
       label: "GST No.",
-      value: "08AAFCJ0644M1ZD",
+      value: "08AAKFF7513P1ZU",
       color: "from-orange-500 to-orange-600",
     },
     {

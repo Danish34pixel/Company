@@ -20,15 +20,15 @@ const NavBar = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   const tabs = [
-  { label: "HOME", path: "/" },
-  { label: "ABOUT US", path: "/about-us" },
-  { label: "CONTACT US", path: "/contact-us" },
-];
-const handleTabClick = (index, path) => {
-  setActive(index);
-  navigate(path);
-  setIsMobileMenuOpen(false);
-};
+    { label: "HOME", path: "/" },
+    { label: "ABOUT US", path: "/about-us" },
+    { label: "CONTACT US", path: "/contact-us" },
+  ];
+  const handleTabClick = (index, path) => {
+    setActive(index);
+    navigate(path);
+    setIsMobileMenuOpen(false);
+  };
 
   const products = [
     "Woven Roving",
@@ -60,14 +60,7 @@ const handleTabClick = (index, path) => {
       id: "fiberglass-fabric-raw-material",
       title: "Fiberglass fabric raw material",
     },
-    {
-      id: "fiberglass-continuous-filament-mats",
-      title: "fiberglass continuous filament mats",
-    },
-    {
-      id: "fiberglass-stitch-mats-emk300-gsm-emk450-gsm",
-      title: "fiberglass stitch mats EMK300 gsm & EMK450 gsm",
-    },
+
     { id: "woven-roving-mat", title: "Woven Roving Mat" },
     { id: "woven-roving-fabric", title: "Woven Roving Fabric" },
     { id: "fiberglass-mat", title: "Fiberglass Mat" },
@@ -117,13 +110,15 @@ const handleTabClick = (index, path) => {
             <div className="flex items-center gap-2 hover:scale-105 transition-transform">
               <MapPin className="w-3 h-3 sm:w-4 sm:h-4 text-amber-400" />
               <span className="hidden sm:inline">
-                Khairthal-Tijara, Rajasthan
+                Building No./Flat No.: GI-66 Road/Street: RIICO INDUSTRIAL AREA
+                City/Town/Village: Tapukara District: Khairthal Tijara State:
+                Rajasthan PIN Code: 301707
               </span>
               <span className="sm:hidden">Rajasthan</span>
             </div>
             <div className="hidden md:flex items-center gap-2">
               <CheckCircle className="w-4 h-4 text-emerald-400" />
-              <span>GST: 08AAFCJ0644M1ZD</span>
+              <span>GST: 08AAKFF7513P1ZU</span>
             </div>
           </div>
           <div className="flex items-center gap-2">
@@ -140,17 +135,20 @@ const handleTabClick = (index, path) => {
           {/* Logo and Company Info */}
           <div className="flex items-center gap-3 md:gap-5 group flex-1 min-w-0">
             <div className="relative">
-              <div className="w-7 h-7 sm:w-8 sm:h-8 md:w-10 md:h-10 bg-gradient-to-br from-slate-800 via-slate-700 to-amber-600 rounded-2xl flex items-center justify-center shadow-2xl hover:shadow-amber-500/30 hover:scale-110 hover:rotate-6 transition-all duration-500 cursor-pointer flex-shrink-0 relative overflow-hidden">
-                <div className="absolute inset-0 bg-gradient-to-tr from-white/0 via-white/30 to-white/0 group-hover:translate-x-full transition-transform duration-700"></div>
-                <div className="text-white font-black text-lg md:text-2xl relative z-10 tracking-wider">
-                  JD
-                </div>
-              </div>
+              <img
+                src="/akDc8-WhatsAppImage20251126at63801PM.webp"
+                alt="Fibertech Innovations Logo"
+                className="w-14 h-14 sm:w-16 sm:h-16 md:w-20 md:h-20 object-contain rounded-2xl shadow-2xl hover:shadow-amber-500/30 hover:scale-110 hover:rotate-3 transition-all duration-500 cursor-pointer flex-shrink-0 bg-white"
+                style={{
+                  background:
+                    "linear-gradient(135deg, #1e293b 60%, #f59e42 100%)",
+                }}
+              />
               <div className="absolute -bottom-1 -right-1 w-2.5 h-2.5 bg-emerald-500 rounded-full border border-white shadow-lg"></div>
             </div>
             <div className="transform group-hover:translate-x-1 transition-transform duration-300 min-w-0">
               <h1 className="text-xs xs:text-sm sm:text-lg md:text-2xl font-black bg-gradient-to-r from-slate-800 via-slate-700 to-amber-600 bg-clip-text text-transparent hover:from-slate-700 hover:via-slate-600 hover:to-amber-500 transition-all duration-500 tracking-tight">
-                Fibertechinovation
+                Fibertech Inovations
               </h1>
               <p className="text-[9px] xs:text-[10px] md:text-xs font-semibold text-slate-600 mt-0.5 tracking-wide">
                 Premium Fiberglass Solutions
@@ -181,7 +179,9 @@ const handleTabClick = (index, path) => {
                       : "text-slate-700 hover:text-slate-900 hover:bg-slate-50"
                   }`}
                 >
-                  <span className="relative z-10 tracking-wide">{tab.label}</span>
+                  <span className="relative z-10 tracking-wide">
+                    {tab.label}
+                  </span>
                 </button>
               ))}
             </div>
@@ -198,16 +198,21 @@ const handleTabClick = (index, path) => {
               </div>
               <div>
                 <div className="text-slate-900 font-bold text-[9px]">
-                  +919559422555     
+                  +919559422555
                 </div>
                 <div className="text-[7px] text-slate-600">Click to Call</div>
               </div>
             </a>
-            <button className="bg-gradient-to-r from-slate-800 via-slate-700 to-amber-600 text-white px-2 py-0.5 rounded-xl flex items-center justify-center gap-1 hover:shadow-xl hover:shadow-amber-500/30 hover:scale-105 transition-all duration-300 relative overflow-hidden group font-bold text-xs">
+            <a
+              href="https://mail.google.com/mail/?view=cm&fs=1&to=fibertechinnovations@gmail.com&su=Enquiry%20from%20website"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="bg-gradient-to-r from-slate-800 via-slate-700 to-amber-600 text-white px-2 py-0.5 rounded-xl flex items-center justify-center gap-1 hover:shadow-xl hover:shadow-amber-500/30 hover:scale-105 transition-all duration-300 relative overflow-hidden group font-bold text-xs"
+            >
               <div className="absolute inset-0 bg-gradient-to-r from-white/0 via-white/20 to-white/0 group-hover:translate-x-full transition-transform duration-700"></div>
               <Mail className="w-5 h-5 relative z-10" />
               <span className="relative z-10">Send Enquiry</span>
-            </button>
+            </a>
           </div>
 
           {/* Mobile Menu Button */}
@@ -260,10 +265,15 @@ const handleTabClick = (index, path) => {
                   <div className="text-[10px] text-slate-600">Tap to Call</div>
                 </div>
               </a>
-              <button className="w-full bg-gradient-to-r from-slate-800 via-slate-700 to-amber-600 text-white px-4 py-2 rounded-xl flex items-center justify-center gap-2 hover:shadow-xl hover:shadow-amber-500/30 transition-all duration-300 font-bold text-xs">
+              <a
+                href="https://mail.google.com/mail/?view=cm&fs=1&to=fibertechinnovations@gmail.com&su=Enquiry%20from%20website"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-full bg-gradient-to-r from-slate-800 via-slate-700 to-amber-600 text-white px-4 py-2 rounded-xl flex items-center justify-center gap-2 hover:shadow-xl hover:shadow-amber-500/30 transition-all duration-300 font-bold text-xs"
+              >
                 <Mail className="w-5 h-5" />
                 <span>Send Enquiry</span>
-              </button>
+              </a>
             </div>
           </div>
         )}
@@ -271,7 +281,10 @@ const handleTabClick = (index, path) => {
         {/* Products Menu */}
         <div className="flex flex-col lg:flex-row items-start lg:items-center gap-2 border-t border-slate-200 py-2 bg-gradient-to-r from-slate-50/50 via-white to-amber-50/30 rounded-t-3xl -mx-2 sm:-mx-4 px-2 sm:px-4 overflow-x-auto">
           <div className="flex items-center gap-3 w-full lg:w-auto">
-            <Link to="/" className="bg-gradient-to-r from-slate-800 via-slate-700 to-amber-600 text-white px-3 py-1.5 rounded-xl font-black text-xs tracking-wider shadow-lg whitespace-nowrap hover:shadow-amber-500/30 hover:scale-105 transition-all duration-300">
+            <Link
+              to="/"
+              className="bg-gradient-to-r from-slate-800 via-slate-700 to-amber-600 text-white px-3 py-1.5 rounded-xl font-black text-xs tracking-wider shadow-lg whitespace-nowrap hover:shadow-amber-500/30 hover:scale-105 transition-all duration-300"
+            >
               OUR PRODUCTS
             </Link>
           </div>
