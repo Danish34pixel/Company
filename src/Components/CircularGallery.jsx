@@ -38,7 +38,7 @@ function autoBind(instance) {
 function createTextTexture(
   gl,
   text,
-  font = "bold 30px monospace",
+  font = "bold 40px monospace",
   color = "black"
 ) {
   const canvas = document.createElement("canvas");
@@ -50,10 +50,24 @@ function createTextTexture(
   canvas.width = textWidth + 20;
   canvas.height = textHeight + 45;
   context.font = font;
-  context.fillStyle = color;
+  // Create a colorful gradient
+  const gradient = context.createLinearGradient(0, 0, canvas.width, 0);
+
+  // Golden shades
+  gradient.addColorStop(0, "#7A5C00"); // Dark gold
+  gradient.addColorStop(0.25, "#C9A227"); // Rich gold
+  gradient.addColorStop(0.5, "#FFD700"); // Pure gold
+  gradient.addColorStop(0.75, "#FFEB99"); // Light gold highlight
+  gradient.addColorStop(1, "#B8860B"); // Antique gold
+
+  context.fillStyle = gradient;
+
   context.textBaseline = "middle";
   context.textAlign = "center";
   context.clearRect(0, 0, canvas.width, canvas.height);
+  // Add shadow for better visibility
+  context.shadowColor = "rgba(0,0,0,0.7)";
+  context.shadowBlur = 8;
   context.fillText(text, canvas.width / 2, canvas.height / 2);
   const texture = new Texture(gl, { generateMipmaps: false });
   texture.image = canvas;
@@ -66,7 +80,7 @@ class Title {
     plane,
     renderer,
     text,
-    textColor = "#545050",
+    textColor = "gold",
     font = "30px sans-serif",
   }) {
     autoBind(this);

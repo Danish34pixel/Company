@@ -46,16 +46,16 @@ const Products = () => {
         "Fiberglass Woven Roving Manufacturers in Gaziabad",
       ],
     },
-    {
-      title: "Fiberglass Mat",
-      image:
-        "/fiberglass-continuous-filament-mats-cfm300-gsm-cfm450-gsm-125x125.webp",
-      products: [
-        "Fiberglass Continuous Filament Mats CFM300 GSM & CFM450 GSM",
-        "Fiberglass Combo Mats ECW900 (600/300) & ECW1050 (600/450)",
-        "Fiberglass Surface Tissue Mats SM30 & Carbon Tissue SCM30 GSM",
-      ],
-    },
+    // {
+    //   title: "Fiberglass Mat",
+    //   image:
+    //     "/fiberglass-continuous-filament-mats-cfm300-gsm-cfm450-gsm-125x125.webp",
+    //   products: [
+    //     "Fiberglass Continuous Filament Mats CFM300 GSM & CFM450 GSM",
+    //     "Fiberglass Combo Mats ECW900 (600/300) & ECW1050 (600/450)",
+    //     "Fiberglass Surface Tissue Mats SM30 & Carbon Tissue SCM30 GSM",
+    //   ],
+    // },
     {
       title: "Fiberglass Products ",
       image: "/fiberglass-stitch-mats-emk300-gsm-emk450-gsm-125x125.webp",
