@@ -53,7 +53,7 @@ const Footer = () => {
           <div className="space-y-6 animate-fadeIn">
             <div>
               <div className="w-16 h-16 bg-gradient-to-br from-slate-800 via-slate-700 to-amber-600 rounded-xl flex items-center justify-center shadow-xl mb-4 group-hover:scale-110 transition-transform duration-300">
-                <span className="text-white font-black text-2xl">JD</span>
+                <img src="/akDc8-WhatsAppImage20251126at63801PM.webp" alt="" />
               </div>
               <h3 className="text-2xl font-black bg-gradient-to-r from-white to-amber-400 bg-clip-text text-transparent mb-2">
                 Fibertechinovations
