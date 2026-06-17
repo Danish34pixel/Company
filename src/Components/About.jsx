@@ -80,7 +80,6 @@ const Contact = () => {
                     <p className="text-xl font-bold">
                       Ankit Shukla <br />
                       Mirdul Shukla <br />
-                      Sandeep
                     </p>
                     <p className="text-amber-100 text-sm mt-1">
                       Chief Executive Officer
@@ -90,7 +89,7 @@ const Contact = () => {
               </div>
 
               {/* Address */}
-              <div className="mb-10 group/item hover:translate-x-2 transition-transform duration-300">
+              {/* <div className="mb-10 group/item hover:translate-x-2 transition-transform duration-300">
                 <div className="flex items-start gap-4">
                   <div className="flex-shrink-0 bg-white/10 rounded-xl p-3 backdrop-blur-sm group-hover/item:bg-white/20 transition-all duration-300">
                     <MapPin className="w-6 h-6" />
@@ -116,7 +115,7 @@ const Contact = () => {
                     </a>
                   </div>
                 </div>
-              </div>
+              </div> */}
 
               {/* Contact Number */}
               <div className="mb-10 group/item hover:translate-x-2 transition-transform duration-300">
@@ -134,7 +133,6 @@ const Contact = () => {
                     >
                       +919559422555 <br />
                       +919024242304 <br />
-                      +919991732322
                     </a>
                     <p className="text-white/80 text-sm mt-1">
                       Available Mon-Sat, 8 AM - 10 PM

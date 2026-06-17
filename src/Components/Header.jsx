@@ -41,7 +41,7 @@ const Header = () => {
     {
       icon: Scale,
       label: "Legal Status of Firm",
-      value: "Limited Company",
+      value: " Partnership",
       color: "from-purple-500 to-purple-600",
     },
   ];
@@ -60,12 +60,12 @@ const Header = () => {
       value: "08AAKFF7513P1ZU",
       color: "from-orange-500 to-orange-600",
     },
-    {
-      icon: Building2,
-      label: "CIN No.",
-      value: "U17299RJ2021PTC072843",
-      color: "from-pink-500 to-pink-600",
-    },
+    // {
+    //   icon: Building2,
+    //   label: "CIN No.",
+    //   value: "U17299RJ2021PTC072843",
+    //   color: "from-pink-500 to-pink-600",
+    // },
   ];
 
   return (
